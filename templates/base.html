@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html class="js page" lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Vedanshi</title>
+  <meta name="description" content="">
+  {% include 'blocks/page_head.html' %}
+</head>
+
+<body class="layout">
+<div class="layout__row">
+   {% include 'blocks/page_header.html' %}
+</div>
+<div class="layout__row layout__row_total">
+    {% block content %}
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At eaque expedita, itaque maiores minus quaerat veritatis. Autem corporis deleniti ex harum labore maxime modi mollitia quas repudiandae rerum, sint totam!
+    {% endblock %}
+</div>
+<div class="layout__row">
+  {% include 'blocks/page_footer.html' %}
+</div>
+{% include 'blocks/page_bottom.html' %}
+</body>
+</html>

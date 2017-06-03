@@ -5,5 +5,5 @@ vedansha/__pycache__
 vedansha/__pycache__/*.pyc
 vedansha/*.py[cod]
 vedansha/*$py.class
-
-static
+.directory
+media
