@@ -1,0 +1,9 @@
+.idea
+db.sqlite3
+vedansha/local_settings.py
+vedansha/__pycache__
+vedansha/__pycache__/*.pyc
+vedansha/*.py[cod]
+vedansha/*$py.class
+
+static
