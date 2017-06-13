@@ -1,105 +1,75 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-  <div class="page__line">
-    <div class="central central--hollow">
-      <div class="slick-slider slick-slider--offer">
-        <img src="{% static 'img/slider_img.jpg' %}" alt="">
-        <img src="{% static 'img/slider_img.jpg' %}" alt="">
-        <img src="{% static 'img/slider_img.jpg' %}" alt="">
+  {% if slider %}
+    <div class="page__line">
+      <div class="central central--hollow">
+        <div class="slick-slider slick-slider--offer">
+          {% for slide in slider.get_slides %}
+            <div class="slide">
+              <div class="slide__content">
+                {% if slide.title %}
+                  <div class="slide__title">{{ slide.title }}</div>
+                {% endif %}
+                {% if slide.text %}
+                  <div class="slide__text">{{ slide.text }}</div>
+                {% endif %}
+              </div>
+              {% if slide.image %}
+                <img src="{{ slide.image.url }}">
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
   <div class="page__line page__line--orange">
     <div class="central">
+      {% if article %}
         <div class="article article--white">
-        <div class="article__title">Dr. Sanjeev K. Pandey</div>
-        <div class="article__subtitle">Yogacharya, PhD Yogatherapie & Naturopathy</div>
-        <div class="article__content">
-          <div class="article__image"><img src="img/teacher.jpg" alt=""></div>
-          <p>The Pandey Ji Institute of Yoga and alternative medicine was established to provide education in
-            vedic science, to help human to controll their emotions, remove fears, to improve their fortune
-            and life, to find himself in the society of modern technology, to open his power in order to
-            feel harmony and happiness and provide holistic treatment, supporting programs with yogic and
-            natural ayurvedic methods in commonand non-curative deseases<br>Our Institute accreditedby
-            International Yoga Alliance and Alternative Medical Counsil Colcatta (India). Our study
-            materials contain basic principles of ancient yogic tradition and self-experience of the
-            teachers following international standart. All our teachers have long experience of practice in
-            vedic science and continuously improve their qualification by practice it herb himalayan
-            masters, monks or Universities. Our students could get basic, intermediate and advanced
-            knowledge of Asana, Pranayama, Meditation, Ayurveda, Naturopathy, Astrology, Yoga Thearapy or
-            getDegree, Diploma and Certificates in Alternative Medicine through on-line education. </p>
-        </div>
-        <div class="article__footer">
-          <div class="social social--white">
-            <a href="" class="social__item"><span class="icon icon-facebook"></span></a>
-            <a href="" class="social__item"><span class="icon icon-tumblr"></span></a>
-            <a href="" class="social__item"><span class="icon icon-linkedin"></span></a>
-            <a href="" class="social__item"><span class="icon icon-twitter"></span></a>
-            <a href="" class="social__item"><span class="icon icon-vimeo"></span></a>
+          <div class="article__title">{{ article.title }}</div>
+          {% if article.subtitle %}
+            <div class="article__subtitle">{{ article.subtitle }}</div>
+          {% endif %}
+          <div class="article__content">
+            {% if article.image %}
+              <div class="article__image"><img src="{{ article.image.url }}" alt="{{ article.title }}"></div>
+            {% endif %}
+            {{ article.text|safe }}
+          </div>
+          <div class="article__footer">
+            <div class="social social--white">
+              {% for icon in article.icons_group.get_icons %}
+                {% if icon.url %}
+                  <a href="" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
+                {% else %}
+                  <span class="social__item"><span class="icon icon-{{ icon.icons }}"></span></span>
+                {% endif %}
+              {% endfor %}
+            </div>
           </div>
         </div>
-      </div>
+      {% else %}
+        <p class="text-color-white">Article not found!</p>
+      {% endif %}
     </div>
   </div>
   <div class="page__line page__line--white page__line--bgi-shiva">
     <div class="central">
-      <div class="grid grid--with-gutter grid--justify">
-        <div class="grid__cell grid__cell--sm-6 grid__cell--lg-2-5">
-          <div>
-            <div class="heading text-color-green"><span class="icon icon-2x icon-skype"></span>&ensp;&nbsp;Online Education</div>
-            <div class="spacer"></div>
-            <p class="text-left">Already Teacher? Join to our distance or online education programs to refresh your knowledge in Vedic Science, learn how to make you classes and inspire your students.</p>
-          </div>
-        </div>
-        <div class="grid__cell grid__cell--sm-6 grid__cell--lg-4">
-          <div>
-            <div class="heading text-color-orange text-right-lg">
-              <span class="icon icon-2x icon-views right-lg"></span>&ensp;&nbsp;Other Vedic Scinces&ensp;&nbsp;
+      {% for list_icon in list_icons %}
+        {% if not forloop.counter|divisibleby:"2" %}<div class="grid grid--with-gutter grid--justify">{% endif %}
+          <div class="grid__cell grid__cell--sm-6 grid__cell--lg-4">
+            <div>
+              <div class="heading {% if list_icon.color %}text-color-{{ list_icon.color }}{% endif %}{% if forloop.counter|divisibleby:"2" %} text-right-lg{% endif %}">
+                <span class="icon icon-2x icon-{{ list_icon.icon }}{% if forloop.counter|divisibleby:"2" %} right-lg{% endif %}"></span>&ensp;&nbsp;{{ list_icon.title }}&ensp;&nbsp;
+              </div>
+              <div class="spacer"></div>
+              <p class="text-left{% if forloop.counter|divisibleby:"2" %} text-right-lg{% endif %}">{{ list_icon.text }}</p>
             </div>
-            <div class="spacer"></div>
-            <p class="text-right-lg">Make your home your castle by using of knowledge of Vastu Shastra, puja or learn Sanskrit to develop your mind and consciousness.</p>
           </div>
-        </div>
-      </div>
-      <div class="grid grid--with-gutter grid--justify">
-        <div class="grid__cell grid__cell--sm-6 grid__cell--lg-2-5">
-          <div>
-            <div class="heading text-color-yellow"><span class="icon icon-2x icon-om-symbol"></span>&ensp;&nbsp;Ayurveda</div>
-            <div class="spacer"></div>
-            <p class="text-left">Keep your body healthy with normalising your doshas by using of herbal methods.</p>
-          </div>
-        </div>
-        <div class="grid__cell grid__cell--sm-6 grid__cell--lg-2-5">
-          <div>
-            <div class="heading text-color-green text-right-lg">
-              <span class="icon icon-2x icon-cube-questions-mark right-lg"></span>
-              &ensp;&nbsp;Retreat Programs&ensp;&nbsp;
-            </div>
-            <div class="spacer"></div>
-            <p class="text-right-lg">if you don’t interested in teacher training or paticular therapy join to our variety of retreat</p>
-          </div>
-        </div>
-      </div>
-      <div class="grid grid--with-gutter grid--justify">
-        <div class="grid__cell grid__cell--sm-6 grid__cell--lg-2-5">
-          <div>
-            <div class="heading text-color-orange"><span class="icon icon-2x icon-moon"></span>&ensp;&nbsp;Astrology</div>
-            <div class="spacer"></div>
-            <p class="text-left">Manage your life, know your strong and weak points by check up of your horoscope.</p>
-          </div>
-        </div>
-        <div class="grid__cell grid__cell--sm-6 grid__cell--lg-4">
-          <div>
-            <div class="heading text-color-yellow text-right-lg">
-              <span class="icon icon-2x icon-lotus right-lg"></span>
-              &ensp;&nbsp;Yoga&ensp;&nbsp;
-            </div>
-            <div class="spacer"></div>
-            <p class="text-right-lg">Balance your body and mind by learning authentic yoga traditions.</p>
-          </div>
-        </div>
-      </div>
+        {% if forloop.counter|divisibleby:"2" %}</div>{% endif %}
+      {% endfor %}
       <div class="text-center">
         <a href="" class="btn btn--green">Booking</a>
       </div>
@@ -109,87 +79,76 @@
     <div class="central">
       <div class="grid grid--with-gutter grid--middle grid--justify">
         <div class="grid__cell grid__cell--md-auto">
-          <div class="heading text-color-orange text-center text-left-md">Yoga Alliance</div>
+          <div class="heading text-color-orange text-center text-left-md">
+            {% if yoga_alliance.url %}
+              <a href="{{ yoga_alliance.url }}">{{ yoga_alliance.text }}</a>
+            {% else %}
+              {{ yoga_alliance.text }}
+            {% endif %}
+          </div>
         </div>
         <div class="spacer hide-md"></div>
         <div class="grid__cell grid__cell--md-auto">
           <div class="grid grid--with-gutter-mini grid--center">
-            <div class="grid__cell grid__cell--auto">
-              <img src="{% static 'img/Yoga_Alliance_logos_RYS200.png' %}" width="80px" height="80px" alt="">
-            </div>
-            <div class="grid__cell grid__cell--auto">
-              <img src="{% static 'img/Yoga_Alliance_logos_RYS300.png' %}" width="80px" height="80px" alt="">
-            </div>
-            <div class="grid__cell grid__cell--auto">
-              <img src="{% static 'img/Yoga_Alliance_logos_RYS500.png' %}" width="80px" height="80px" alt="">
-            </div>
-            <div class="grid__cell grid__cell--auto">
-              <img src="{% static 'img/E-RYT200.png' %}" width="80px" height="80px" alt="">
-            </div>
-            <div class="grid__cell grid__cell--auto">
-              <img src="{% static 'img/E-RYT500.png' %}" width="80px" height="80px" alt="">
-            </div>
+            {% for image_obj in yoga_alliance.get_images %}
+              <div class="grid__cell grid__cell--auto">
+                <img src="{{ image_obj.image.url }}" width="80px" height="80px" alt="">
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="page__line page__line--green page__line--bgi-testimonials">
-    <div class="central">
-      <div class="heading text-center text-color-white">Testimonials</div>
-      <div class="spacer"></div>
-      <div class="slick-slider slick-slider--testimonials">
-        <div>
-          <div class="grid grid--with-gutter">
-            <div class="grid__cell grid__cell--sm-8 grid__cell--lg-6">
-              <div class="comment-cloud text-color-white text-justify">Dear, Sanjeev We want to thank you so much for your excellent and sensitive awareness of our training need in your HATHA YOGA CLASS. Your attention to detail and to our old sports injuries, stiff and closed areas of our bodies, and our ages (Dino - 76 Years, Leslie 60 years) has made our yoga practice improve quickly and safely. You have tought us</div>
+  {% if testimonials %}
+    <div class="page__line page__line--green page__line--bgi-testimonials">
+      <div class="central">
+        <div class="heading text-center text-color-white">Testimonials</div>
+        <div class="spacer"></div>
+        <div class="slick-slider slick-slider--testimonials">
+          {% for testimonial in testimonials %}
+            <div>
+              <div class="grid grid--with-gutter">
+                <div class="grid__cell grid__cell--sm-8 grid__cell--lg-6">
+                  <div class="comment-cloud text-color-white text-justify">{{ testimonial.text|safe }}</div>
+                </div>
+                <div class="grid__cell grid__cell--sm-4 grid__cell--lg-6">
+                  <div class="spacer"></div>
+                  <div class="heading heading--medium text-color-white">{{ testimonial.title }}</div>
+                </div>
+              </div>
             </div>
-            <div class="grid__cell grid__cell--sm-4 grid__cell--lg-6">
-              <div class="spacer"></div>
-              <div class="heading heading--medium text-color-white">Dino; Leslie Lampron, USA</div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="grid grid--with-gutter">
-            <div class="grid__cell grid__cell--sm-8 grid__cell--lg-6">
-              <div class="comment-cloud text-color-white text-justify">Dear, Sanjeev We want to thank you so much for your excellent and sensitive awareness of our training need in your HATHA YOGA CLASS. Your attention to detail and to our old sports injuries, stiff and closed areas of our bodies, and our ages (Dino - 76 Years, Leslie 60 years) has made our yoga practice improve quickly and safely. You have tought us seriously and safely and we have enjoyed your style and smiles. Each day we feel better and better.Thank you so much.</div>
-            </div>
-            <div class="grid__cell grid__cell--sm-4 grid__cell--lg-6">
-              <div class="spacer"></div>
-              <div class="heading heading--medium text-color-white">Dino; Leslie Lampron, USA</div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
-  </div>
+  {% endif %}
   <div class="page__line page__line--white">
     <div class="central">
       <div class="grid grid--with-gutter grid--middle grid--justify">
         <div class="grid__cell grid__cell--md-auto">
-          <div class="heading text-color-green text-center text-left-md"><a href="">We accept in a Donation</a></div>
+          <div class="heading text-color-green text-center text-left-md">
+            {% if payment_methods.url %}
+              <a href="{{ payment_methods.url }}">{{ payment_methods.text }}</a>
+            {% else %}
+              {{ payment_methods.text }}
+            {% endif %}
+          </div>
         </div>
         <div class="spacer hide-md"></div>
         <div class="grid__cell grid__cell--md-auto">
           <div class="grid grid--with-gutter-mini grid--center grid--middle">
-            <div class="grid__cell grid__cell--6 grid__cell--xs-auto">
-              <div class="text-center"><img src="{% static 'img/paypal_PNG3.png' %}" alt=""></div>
-            </div>
-            <div class="grid__cell grid__cell--6 grid__cell--xs-auto">
-              <div class="text-center"><img src="{% static 'img/visa_PNG30.png' %}" alt=""></div>
-            </div>
-            <div class="spacer hide-xs"></div>
-            <div class="grid__cell grid__cell--6 grid__cell--xs-auto">
-              <div class="text-center"><img src="{% static 'img/MaestroCard.png' %}" alt=""></div>
-            </div>
-            <div class="grid__cell grid__cell--6 grid__cell--xs-auto">
-              <div class="text-center"><img src="{% static 'img/MasterCard_logo.png' %}" alt=""></div>
-            </div>
-            <div class="spacer hide-sm"></div>
-            <div class="grid__cell grid__cell--auto">
-              <img src="{% static 'img/WU-logo.png' %}" alt="">
-            </div>
+            {% for image_obj in payment_methods.get_images %}
+              <div class="grid__cell grid__cell--6 grid__cell--xs-auto">
+                <div class="text-center"><img src="{{ image_obj.image.url }}"></div>
+              </div>
+              {% if forloop.counter == 2%}
+                <div class="spacer hide-xs"></div>
+              {% endif %}
+              {% if forloop.counter == 4%}
+                <div class="spacer hide-sm"></div>
+              {% endif %}
+            {% endfor %}
           </div>
         </div>
       </div>

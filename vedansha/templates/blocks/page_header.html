@@ -1,0 +1,13 @@
+{% load staticfiles sitetree %}
+<div class="page__line page__line--header-top">
+  {% sitetree_menu from "header_top_nav" include "trunk" template "navigate/header_top_nav.html" %}
+</div>
+<div class="page__line page__line--header-middle">
+  <a href="{% url "home" %}" class="logo">
+    <img src="{% static 'img/logo.svg' %}" alt="logo" width="200px" height="160px" class="logo__img">
+  </a>
+</div>
+<div class="page__line page__line--header-bottom">
+  {% sitetree_menu from "header_bottom_nav" include "trunk" template "navigate/header_bottom_nav.html" %}
+</div>
+

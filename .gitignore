@@ -7,3 +7,6 @@ vedansha/*.py[cod]
 vedansha/*$py.class
 .directory
 media
+*/__pycache__/*.pyc
+*/__pycache__
+*.pyc
