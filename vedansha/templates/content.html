@@ -1,0 +1,25 @@
+{% extends "base.html" %}{% load staticfiles sitetree %}
+
+{% block inner %}
+  <div class="page__line">
+    <div class="central">
+      <ul class="breadcrumbs">
+        {% block breadcrumbs %}
+          <li class="breadcrumbs__item">
+            <a href="{% url 'home' %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
+          </li>
+        {% endblock %}
+      </ul>
+    </div>
+  </div>
+  <div class="page__line page__line--blue page__line--content">
+    <div class="central">
+      {% block title %}
+        <h1 class="page__title page__title--hollow-side heading text-color-orange">Page Title</h1>
+      {% endblock %}
+      {% block content %}
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,2 +1,42 @@
-{% extends "base.html" %}
+{% extends "content.html" %}{% load staticfiles sitetree %}
+
+{% block breadcrumbs %}
+  <li class="breadcrumbs__item">
+    <span class="breadcrumbs__link">{{ article.title }}</span>
+  </li>
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+  <div class="article">
+    <div class="article__title">{{ article.title }}</div>
+    {% if article.subtitle %}
+      <div class="article__subtitle">{{ article.subtitle }}</div>
+    {% endif %}
+    <div class="article__content">
+      {% if article.image %}
+        <div class="article__image"><img src="{{ article.image.url }}" alt="{{ article.title }}"></div>
+      {% endif %}
+      {{ article.text|safe }}
+    </div>
+    <div class="article__footer">
+      {% if article.date %}
+        <span class="article__publish-date">{{ article.date | date:"d.m.Y" }}</span>
+      {% endif %}
+      {% if article.icons_group %}
+        <div class="social social--white{% if article.date %} right{% endif %}">
+          {% for icon in article.icons_group.get_icons %}
+            {% if icon.url %}
+              <a href="" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
+            {% else %}
+              <span class="social__item"><span class="icon icon-{{ icon.icons }}"></span></span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
 
