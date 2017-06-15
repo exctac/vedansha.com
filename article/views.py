@@ -8,7 +8,3 @@ class ArticleDetail(DetailView):
     context_object_name = 'article'
     slug_field = 'alias'
     slug_url_kwarg = 'alias'
-
-    def get_context_data(self, **kwargs):
-        context = super(ArticleDetail, self).get_context_data()
-        return context

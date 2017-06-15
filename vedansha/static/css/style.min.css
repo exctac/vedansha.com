@@ -3293,7 +3293,8 @@ a:hover .thumb {
         margin-bottom: 0; }
 .article__title {
   font-size: 1.5rem;
-  line-height: normal; }
+  line-height: normal;
+  color: #f06828; }
 .article__subtitle {
   font-size: 1.25rem;
   line-height: normal;

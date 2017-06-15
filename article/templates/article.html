@@ -1,13 +1,12 @@
 {% extends "content.html" %}{% load staticfiles sitetree %}
 
 {% block breadcrumbs %}
-  <li class="breadcrumbs__item">
-    <span class="breadcrumbs__link">{{ article.title }}</span>
-  </li>
+  {{ block.super }}
+  <li class="breadcrumbs__item">{{ article.title }}</li>
+  {% sitetree_breadcrumbs from "header_top_nav" %}
 {% endblock %}
 
 {% block title %}{% endblock %}
-
 {% block content %}
   <div class="article">
     <div class="article__title">{{ article.title }}</div>
