@@ -16,6 +16,7 @@ urlpatterns = [
     # Urls for Site
     url(r'^$', HomePage.as_view(), name='home'),
     url(r'^company/(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='company'),
+    url(r'^faq/', include('faq.urls'), name='faq'),
 ]
 
 if settings.DEBUG:
