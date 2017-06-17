@@ -1,17 +1,12 @@
 {% extends "content.html" %}{% load staticfiles sitetree %}
 
-{% block breadcrumbs %}
-  {{ block.super }}
-  <li class="breadcrumbs__item">{{ article.title }}</li>
-  {% sitetree_breadcrumbs from "header_top_nav" %}
-{% endblock %}
+{% block inner__title %}{% endblock %}
 
-{% block title %}{% endblock %}
-{% block content %}
+{% block inner__content %}
   <div class="article">
     <div class="article__title">{{ article.title }}</div>
     {% if article.subtitle %}
-      <div class="article__subtitle">{{ article.subtitle }}</div>
+      <h2 class="article__subtitle">{{ article.subtitle }}</h2>
     {% endif %}
     <div class="article__content">
       {% if article.image %}
@@ -19,6 +14,7 @@
       {% endif %}
       {{ article.text|safe }}
     </div>
+    {% if article.date or article.icons_group %}
     <div class="article__footer">
       {% if article.date %}
         <span class="article__publish-date">{{ article.date | date:"d.m.Y" }}</span>
@@ -35,6 +31,7 @@
         </div>
       {% endif %}
     </div>
+    {% endif %}
   </div>
 {% endblock %}
 

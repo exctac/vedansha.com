@@ -3,21 +3,17 @@
 {% block inner %}
   <div class="page__line">
     <div class="central">
-      <ul class="breadcrumbs">
-        {% block breadcrumbs %}
-          <li class="breadcrumbs__item">
-            <a href="{% url 'home' %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
-          </li>
-        {% endblock %}
-      </ul>
+      {% block breadcrumbs %}
+        {% sitetree_breadcrumbs from "header_top_nav" template "navigate/breadcrumbs.html" %}
+      {% endblock %}
     </div>
   </div>
   <div class="page__line page__line--blue page__line--content">
-    <div class="central">
-      {% block title %}
+    <div class="central {% block central--mod %}{% endblock %}">
+      {% block inner__title %}
         <h1 class="page__title page__title--hollow-side heading text-color-orange">Page Title</h1>
       {% endblock %}
-      {% block content %}
+      {% block inner__content %}
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
       {% endblock %}
     </div>

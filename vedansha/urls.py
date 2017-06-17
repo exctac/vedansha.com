@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url, include, handler404
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -14,9 +14,12 @@ urlpatterns = [
     # url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
 
     # Urls for Site
+
     url(r'^$', HomePage.as_view(), name='home'),
-    url(r'^company/(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='company'),
     url(r'^faq/', include('faq.urls'), name='faq'),
+    url(r'^testimonials/', include('testimonials.urls'), name='testimonials'),
+    url(r'^', include('single_pages.urls')),
+    url(r'^(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='article'),
 ]
 
 if settings.DEBUG:

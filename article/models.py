@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.text import slugify
 
 from common.models import AbstractStatus
@@ -6,7 +7,7 @@ from icons.models import IconGroup
 
 
 class Article(AbstractStatus):
-    create_date = models.DateTimeField("Create date", auto_now=True)
+    create_date = models.DateTimeField("Create date", default=timezone.now, blank=True)
     show_date = models.BooleanField("Show create date", default=True)
     title = models.CharField("Title", max_length=255)
     alias = models.CharField("Alias", max_length=255, blank=True)

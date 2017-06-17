@@ -1,0 +1,18 @@
+{% extends "content.html" %}{% load staticfiles sitetree %}
+
+{% block central--mod %}central--hollow{% endblock %}
+
+{% block inner__title %}
+<h1 class="page__title heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
+{% endblock %}
+
+{% block inner__content %}
+<div class="blog">
+  {% for testimonial in testimonials %}
+  <div class="blog__item box{% if not forloop.counter|divisibleby:'2' %} box--white{% endif %}">
+    <div class="heading heading--medium text-color-orange">{{ testimonial.title }}</div>
+    <div class="blog__item-text">{{ testimonial.text|safe }}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

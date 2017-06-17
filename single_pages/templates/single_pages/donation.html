@@ -1,0 +1,48 @@
+{% extends "content.html" %}{% load staticfiles sitetree %}
+
+{% block inner__title %}{% endblock %}
+
+{% block inner__content %}
+  <div class="grid grid--with-gutter grid--with-gutter-mini">
+    <div class="grid__cell grid__cell--md-6">
+      {% include 'article/article_include.html' %}
+    </div>
+    <div class="grid__cell grid__cell--md-6">
+      <div class="spacer spacer--3x"></div>
+      <form action="" class="form box box--white">
+        <label class="field-select">
+          <div class="field-select__name">Select Country <span class="field-required">*</span></div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select" required="required">
+              <option>Value 10</option>
+              <option>Value 10</option>
+              <option>Value 10</option>
+              <option>Value 10</option>
+            </select>
+          </div>
+        </label>
+        <label class="field-select">
+          <div class="field-select__name">Select Donation Type <span class="field-required">*</span></div>
+          <div class="field-select__select-wrap">
+            <select class="field-select__select" required="required">
+              <option>Value 1</option>
+              <option>Value 2</option>
+              <option>Value 3</option>
+              <option>Value 10</option>
+            </select>
+          </div>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">Donation Amount in USD <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            <input class="field-text__input" type="text" placeholder="" required="required">
+          </span>
+        </label>
+        <div class="field-actions text-right">
+          <button type="submit" class="btn btn--expand-xs btn--auto-md btn--underline btn--green">Booking</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

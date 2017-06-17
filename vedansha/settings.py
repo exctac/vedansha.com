@@ -25,7 +25,7 @@ SECRET_KEY = 'knwl70p_z4alexa@1^xc^a$(7ua_%2!5nz8f@4975$*^bwc4t5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Install apps
     'sitetree',
     'solo',
+    'mptt',
     'easy_thumbnails',
     'colorful',
     'ckeditor',
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     'icons',
     'article',
     'faq',
+    'single_pages',
 ]
 
 MIDDLEWARE = [
