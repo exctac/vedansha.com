@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^certificates/', include('certificate.urls'), name='certificates'),
     url(r'^news/', include('news.urls'), name='news'),
     url(r'^', include('single_pages.urls'), name='single_pages'),
+    url(r'^', include('gallery.urls'), name='gallery'),
     url(r'^(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='article'),
 ]
 

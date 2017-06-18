@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'news',
     'certificate',
     'single_pages',
+    'gallery',
 ]
 
 MIDDLEWARE = [
@@ -150,6 +151,8 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'vedansha/static'), )
+
+NO_IMAGE = os.path.join(MEDIA_URL, 'vedansha/static', 'img/no_image.png')
 
 # ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"

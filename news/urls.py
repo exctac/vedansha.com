@@ -6,6 +6,7 @@ from news.models import News
 urlpatterns = [
     url(r'^$', NewsListView.as_view(), name='news_list'),
     url(r'^(?P<alias>[-\w]+)/$', ArticleDetail.as_view(
-        model=News
+        model=News,
+        template_name='news/news_detail.html'
     ), name='news_detail'),
 ]
