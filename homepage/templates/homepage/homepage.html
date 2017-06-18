@@ -26,33 +26,7 @@
   {% endif %}
   <div class="page__line page__line--orange">
     <div class="central">
-      {% if article %}
-        <div class="article article--white">
-          <div class="article__title">{{ article.title }}</div>
-          {% if article.subtitle %}
-            <div class="article__subtitle">{{ article.subtitle }}</div>
-          {% endif %}
-          <div class="article__content">
-            {% if article.image %}
-              <div class="article__image"><img src="{{ article.image.url }}" alt="{{ article.title }}"></div>
-            {% endif %}
-            {{ article.text|safe }}
-          </div>
-          <div class="article__footer">
-            <div class="social social--white">
-              {% for icon in article.icons_group.get_icons %}
-                {% if icon.url %}
-                  <a href="" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
-                {% else %}
-                  <span class="social__item"><span class="icon icon-{{ icon.icons }}"></span></span>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      {% else %}
-        <p class="text-color-white">Article not found!</p>
-      {% endif %}
+      {% include 'article/article_include.html' with article_mod="article--white" social_mod="social--white" %}
     </div>
   </div>
   <div class="page__line page__line--white page__line--bgi-shiva">

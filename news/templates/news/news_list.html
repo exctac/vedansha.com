@@ -1,0 +1,58 @@
+{% extends "content.html" %}{% load staticfiles sitetree %}
+
+{% block inner__title %}
+<div class="page__title {# page__title--hollow-front #}">
+  <h1 class="heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
+{#  <span>Page {{ paginator }} of {{ paginator.num_pages }}</span>#}
+</div>
+{% endblock %}
+
+{% block central--mod %}central--hollow{% endblock %}
+
+{% block inner__content %}
+  {% for news in news_list %}
+    {% if not forloop.counter|divisibleby:"2" %}
+    <div class="grid grid--flex">{% endif %}
+      <div class="grid__cell grid__cell--12 grid__cell--md-6{% if forloop.counter|divisibleby:"3" or forloop.counter|divisibleby:"7" %} grid__cell--first grid__cell--md-last{% endif %}">
+      <div class="article article--news-blog box{% if not forloop.counter|divisibleby:"2" %} box--white{% endif %}">
+        <div class="grid grid--with-gutter grid--flex grid--full-height">
+          {% if news.image %}
+          <div class="grid__cell grid__cell--xs-5 grid__cell--lg-6">
+            <div class="article__image" style="background-image: url({{ news.image.url }})"></div>
+          </div>
+          <div class="spacer hide-xs"></div>
+          {% endif %}
+          {% if news.image %}
+            <div class="grid__cell grid__cell--xs-7 grid__cell--lg-6">
+          {% else %}
+            <div class="grid__cell grid__cell--12">
+          {% endif %}
+
+            <div class="article__inner">
+              <h2 class="article__subtitle">{{ news.title }}</h2>
+              <div class="article__content">
+                <p>{{ news.text|truncatechars_html:160|safe  }}</p>
+              </div>
+              <div class="article__footer">
+                <span class="article__publish-date">{{ news.create_date|date:"d.m.Y" }}</span>
+                <a href="{% url 'news_detail' alias=news.alias %}" class="article__show-more">read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    {% if forloop.counter|divisibleby:"2" or forloop.last %}
+    </div>{% endif %}
+  {% endfor %}
+  <div class="pagination box box--white">
+    <div class="pagination__title">Page:</div>
+    <div class="pagination__nav">
+    {% for page in paginator.page_range %}
+      <a href="{% url 'news_list' %}?page={{ page }}" class="pagination__item">{{ page }}</a>
+    {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}
+

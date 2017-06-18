@@ -1,4 +1,4 @@
-from django.conf.urls import url, include, handler404
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -18,7 +18,9 @@ urlpatterns = [
     url(r'^$', HomePage.as_view(), name='home'),
     url(r'^faq/', include('faq.urls'), name='faq'),
     url(r'^testimonials/', include('testimonials.urls'), name='testimonials'),
-    url(r'^', include('single_pages.urls')),
+    url(r'^certificates/', include('certificate.urls'), name='certificates'),
+    url(r'^news/', include('news.urls'), name='news'),
+    url(r'^', include('single_pages.urls'), name='single_pages'),
     url(r'^(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='article'),
 ]
 

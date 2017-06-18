@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'icons',
     'article',
     'faq',
+    'news',
+    'certificate',
     'single_pages',
 ]
 

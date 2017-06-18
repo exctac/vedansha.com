@@ -4,5 +4,6 @@ from single_pages.models import *
 
 
 @admin.register(Contacts)
-class ListIconsAdmin(SingletonModelAdmin):
+class ContactsAdmin(SingletonModelAdmin):
     pass
+

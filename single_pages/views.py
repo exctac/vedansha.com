@@ -1,6 +1,6 @@
+from common.views import ShowOnlyPublishedView
 from single_pages.models import *
-from article.models import Article
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 
 class ContactsView(TemplateView):

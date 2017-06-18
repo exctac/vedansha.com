@@ -4,7 +4,7 @@
 
 {% block inner__content %}
   <div class="article">
-    <div class="article__title">{{ article.title }}</div>
+    <h1 class="article__title">{{ article.title }}</h1>
     {% if article.subtitle %}
       <h2 class="article__subtitle">{{ article.subtitle }}</h2>
     {% endif %}
@@ -16,11 +16,11 @@
     </div>
     {% if article.date or article.icons_group %}
     <div class="article__footer">
-      {% if article.date %}
-        <span class="article__publish-date">{{ article.date | date:"d.m.Y" }}</span>
+      {% if article.show_date %}
+        <span class="article__publish-date">{{ article.create_date | date:"d.m.Y" }}</span>
       {% endif %}
       {% if article.icons_group %}
-        <div class="social social--white{% if article.date %} right{% endif %}">
+        <div class="social social--orange{% if article.show_date %} right{% endif %}">
           {% for icon in article.icons_group.get_icons %}
             {% if icon.url %}
               <a href="" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>

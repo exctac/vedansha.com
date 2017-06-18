@@ -1,0 +1,28 @@
+{% extends "content.html" %}{% load staticfiles sitetree %}
+
+{% block central--mod %}central--hollow{% endblock %}
+
+{% block inner__title %}
+<h1 class="page__title heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
+{% endblock %}
+
+{% block inner__content %}
+<div class="blog">
+  {% for certificate in certificates %}
+  <div class="blog__item box{% if not forloop.counter|divisibleby:'2' %} box--white{% endif %}">
+    <div class="grid grid--with-gutter">
+      <div class="grid__cell grid__cell--xs-5 grid__cell--md-4 text-center text-right-xs">
+        <img class="blog__item-image" src="{{ certificate.image.url }}" alt="{{ certificate.title }}">
+      </div>
+      <div class="spacer hide-xs"></div>
+      <div class="grid__cell grid__cell--xs-7 grid__cell--md-8">
+        <h2 class="heading heading--medium text-color-orange text-center text-left-xs">{{ certificate.title }}</h2>
+        {% if certificate.text %}
+        <p>{{ certificate.text }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

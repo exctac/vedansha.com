@@ -1,6 +1,7 @@
 from django.db import models
 from solo.models import SingletonModel
 from article.models import Article
+from common.models import AbstractStatus
 from icons.models import IconGroup
 
 
