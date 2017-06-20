@@ -10,7 +10,7 @@ from vedansha import settings
 
 class PhotoGallery(AbstractStatus):
     title = models.CharField("Title", max_length=255)
-    alias = models.CharField("Alias", max_length=255)
+    alias = models.CharField("Alias", max_length=255, blank=True)
 
     def __str__(self):
         return self.title
@@ -25,10 +25,10 @@ class PhotoGallery(AbstractStatus):
         Get preview image
         """
         image_instance = self.photo_set.first()
-        if image_instance and os.path.exists(image_instance.image.path):
-            return {"main": image_instance.image, 'default': None}
-        else:
-            return {"main": None, 'default': get_thumbnailer(open(settings.NO_IMAGE), relative_name='no_image.png')}
+        default_image = None
+        if not image_instance and os.path.exists(image_instance.image.path):
+            default_image = get_thumbnailer(open(settings.NO_IMAGE), relative_name='no_image.png')
+        return image_instance.image or default_image
 
     @property
     def get_all_images(self):
@@ -61,7 +61,6 @@ class VideoGallery(SingletonModel):
     def __str__(self):
         return u"Video Gallery"
 
-    @property
     def get_videos(self):
         """
         Get all videos links generator

@@ -2,18 +2,6 @@
 
 {% block inner__title %}{% endblock %}
 
-{% block breadcrumbs %}
-  <ul class="breadcrumbs">
-    <li class="breadcrumbs__item">
-      <a href="{% url 'home' %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
-    </li>
-    <li class="breadcrumbs__item">
-      <a href="{% url 'news_list' %}" class="breadcrumbs__link">News</a>
-    </li>
-    <li class="breadcrumbs__item">{{ article.title }}</li>
-  </ul>
-{% endblock %}
-
 {% block inner__content %}
   {% include "article/article_include.html" %}
 {% endblock %}

@@ -3,7 +3,7 @@ from solo.admin import SingletonModelAdmin
 from gallery.models import PhotoGallery, Photo, VideoGallery, VideoGalleryLink
 
 
-class VideoGalleryLinkInline(admin.StackedInline):
+class VideoGalleryLinkTabular(admin.TabularInline):
     model = VideoGalleryLink
     extra = 0
 
@@ -16,12 +16,12 @@ class PhotoInline(admin.StackedInline):
 @admin.register(VideoGallery)
 class VideoGalleryAdmin(SingletonModelAdmin):
     inlines = [
-        VideoGalleryLinkInline
+        VideoGalleryLinkTabular
     ]
 
 
 @admin.register(PhotoGallery)
-class PhotoGalleryAdmin(SingletonModelAdmin):
+class PhotoGalleryAdmin(admin.ModelAdmin):
     inlines = [
         PhotoInline
     ]

@@ -1,5 +1,5 @@
 import os
-
+import itertools
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
@@ -41,7 +41,11 @@ class Article(AbstractStatus):
 
     def save(self, *args, **kwargs):
         if not self.alias:
-            self.alias = slugify(self.title)
+            orig = self.alias = slugify(self.title)
+            for x in itertools.count(1):
+                if not Article.objects.filter(alias=self.alias).exists():
+                    break
+                self.alias = '%s-%d' % (orig, x)
         super(Article, self).save(*args, **kwargs)
 
     def get_image(self):

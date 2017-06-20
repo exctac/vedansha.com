@@ -21,4 +21,6 @@ class VideoGalleryTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(VideoGalleryTemplateView, self).get_context_data(**kwargs)
-        context['video_gallery'] = VideoGallery.get_videos
+        context['video_gallery'] = VideoGallery.get_solo().get_videos()
+        print(context['video_gallery'])
+        return context

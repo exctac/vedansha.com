@@ -1,20 +1,19 @@
 {% extends "content.html" %}{% load staticfiles sitetree %}
 
 {% block inner__title %}
-<h1 class="page__title heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
+  <h1 class="page__title page__title--hollow-side heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
 {% endblock %}
 
 {% block inner__content %}
-  <div class="accordion" id="js-accordion" data-block="accordion">
-    {% for object in object_list %}
-    <div class="accordion__item">
-      <div class="accordion__title">
-        <h2 class="accordion__title--inner">{{ object.question }}</h2>
-      </div>
-      <div class="accordion__content">
-        {{ object.answer|safe }}
-      </div>
+  <div class="grid grid--with-gutter">
+    {% for video in video_gallery %}
+    <div class="grid__cell grid__cell--xs-6 grid__cell--sm-4">
+      <a class="video" data-fancybox href="https://www.youtube.com/watch?v={{ video.video_code }}&amp;autoplay=1&amp;rel=0&amp;controls=0&amp;showinfo=0">
+        <span class="video__image" style="background-image: url('//img.youtube.com/vi/{{ video.video_code }}/mqdefault.jpg')"></span>
+        <span class="video__icon-play"><i class="icon icon-youtube-play"></i></span>
+      </a>
+      <div class="spacer spacer--2x"></div>
     </div>
-      {% endfor %}
+    {% endfor %}
   </div>
 {% endblock %}

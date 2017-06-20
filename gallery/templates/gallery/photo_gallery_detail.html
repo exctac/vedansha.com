@@ -6,24 +6,15 @@
 
 {% block central--mod %}central--hollow{% endblock %}
 
-{% block breadcrumbs %}
-  <ul class="breadcrumbs">
-    <li class="breadcrumbs__item">
-      <a href="{% url 'home' %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
-    </li>
-    <li class="breadcrumbs__item">
-      <a href="{% url 'photo_gallery_list' %}" class="breadcrumbs__link"></a>
-    </li>
-    <li class="breadcrumbs__item">{{ article.title }}</li>
-  </ul>
-{% endblock %}
-
 {% block inner__content %}
   <div class="blog blog--galery grid grid--flex">
-    <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
-      <a href="" class="blog__item">
-        <div class="blog__item-image" style="background-image: url(img/team.jpg)"></div>
-      </a>
-    </div>
+    {% for photo in photogallery.get_all_images %}
+      <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
+        {% thumbnail photo.image 208x208 crop as thumb %}
+        <a href="/media/{{ photo.image|thumbnailer_passive }}" class="blog__item" data-fancybox="images">
+          <img class="blog__item-image" src="{{ thumb.url }}" alt="">
+        </a>
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}
