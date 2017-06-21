@@ -10,3 +10,7 @@ class ContactsView(TemplateView):
         context = super(ContactsView, self).get_context_data(**kwargs)
         context['article'] = Contacts.get_solo()
         return context
+
+
+class BookingTemplateView(TemplateView):
+    template_name = "single_pages/booking_form.html"

@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'certificate',
     'single_pages',
     'gallery',
+    'team',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +91,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'vedansha.context_processors.footer_content',
             ],
         },
     },
@@ -152,7 +154,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'vedansha/static'), )
 
-NO_IMAGE = os.path.join(MEDIA_URL, 'vedansha/static', 'img/no_image.png')
+NO_IMAGE = os.path.join(BASE_DIR, 'vedansha/static', 'img/no_image.png')
+NO_AVATAR = os.path.join(BASE_DIR, 'vedansha/static', 'img/no_avatar.jpg')
 
 # ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"

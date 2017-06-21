@@ -1,0 +1,12 @@
+{% load sitetree %}
+{% if sitetree_items %}
+<ul class="menu menu--white">
+  {% for item in sitetree_items %}
+    {% if item.insitetree  %}
+      <li class="menu__item {% if item.is_current or item.in_current_branch %}{{ item.is_current|yesno:'menu__item--active ' }}{{ item.in_current_branch|yesno:'menu__item--branch-active' }}{% endif %}">
+        <a href="{% sitetree_url for item %}" class="menu__link" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

@@ -4,12 +4,14 @@
     {% if article.subtitle %}
       <h2 class="article__subtitle">{{ article.subtitle }}</h2>
     {% endif %}
+    {% if article.show_image %}
     <div class="article__content">
       {% if article.image %}
         <div class="article__image"><img src="{{ article.image.url }}" alt="{{ article.title }}"></div>
       {% endif %}
       {{ article.text|safe }}
     </div>
+    {% endif %}
     {% if article.date or article.icons_group %}
     <div class="article__footer">
       {% if article.show_date %}

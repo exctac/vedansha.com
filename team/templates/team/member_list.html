@@ -1,0 +1,23 @@
+{% extends "content.html" %}{% load staticfiles sitetree thumbnail %}
+
+{% block inner__title %}
+<h1 class="page__title heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
+{% endblock %}
+
+{% block central--mod %}central--hollow{% endblock %}
+
+{% block inner__content %}
+  <div class="blog blog--galery grid grid--flex">
+  {% for member in member_list %}
+    <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
+      <a href="{% url 'team_detail' alias=member.alias %}" class="blog__item">
+        {% thumbnail member.get_image 208x208 crop as thumb %}
+        <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ member.title }}">
+        <div class="blog__item-title">
+          <div class="blog__item-title-inner">{{ member.title }}</div>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}

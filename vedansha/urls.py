@@ -22,7 +22,10 @@ urlpatterns = [
     url(r'^news/', include('news.urls'), name='news'),
     url(r'^', include('single_pages.urls'), name='single_pages'),
     url(r'^', include('gallery.urls'), name='gallery'),
-    url(r'^(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='article'),
+    url(r'^', include('team.urls'), name='team'),
+] + [
+    # for article page
+    url(r'^', include('article.urls'), name='article'),
 ]
 
 if settings.DEBUG:
