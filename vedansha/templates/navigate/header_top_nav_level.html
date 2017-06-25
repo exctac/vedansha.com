@@ -3,11 +3,13 @@
   <div class="main-nav__lvl">
     <ul class="main-nav__list">
       {% for item in sitetree_items %}
-        <li class="main-nav__item">
-          <a href="{% sitetree_url for item %}" class="main-nav__link" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
-            {% if item.has_children %}
-              {% sitetree_children of item for menu template "navigate/header_top_nav_level.html" %}
-            {% endif %}
+        <li class="main-nav__item {% if item.has_children %}main-nav__item--has-chidren{% endif %}">
+          <a href="{% sitetree_url for item %}" class="main-nav__link" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}
+            {% if item.has_children %}<span class="main-nav__arrow icon icon-angle-right"></span>{% endif %}
+          </a>
+          {% if item.has_children %}
+            {% sitetree_children of item for menu template "navigate/header_top_nav_level.html" %}
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

@@ -5,10 +5,51 @@ from django.utils import timezone
 from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
-
+from mptt.models import MPTTModel, TreeForeignKey
 from common.models import AbstractStatus
 from icons.models import IconGroup
 from vedansha import settings
+import mptt
+
+
+class CategoryArticle(MPTTModel, AbstractStatus):
+    title = models.CharField("Title", max_length=255)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', verbose_name=u"Category")
+    alias = models.CharField("Alias", max_length=255, blank=True)
+    image = ThumbnailerImageField(
+        "Image",
+        upload_to='articles/',
+        # blank=True,
+        help_text="Main picture of the article (optional field)"
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+    def get_image(self):
+        """
+        Get Category image
+        """
+        image = self.image
+        if not image:
+            image = get_thumbnailer(open(settings.NO_AVATAR), relative_name='no_image.png')
+        return image
+
+    def save(self, *args, **kwargs):
+        if not self.alias:
+            orig = self.alias = slugify(self.title)
+            for x in itertools.count(1):
+                if not Article.objects.filter(alias=self.alias).exists():
+                    break
+                self.alias = '%s-%d' % (orig, x)
+        super(CategoryArticle, self).save(*args, **kwargs)
+
+
+mptt.register(CategoryArticle)
 
 
 class Article(AbstractStatus):
@@ -17,6 +58,7 @@ class Article(AbstractStatus):
     title = models.CharField("Title", max_length=255)
     alias = models.CharField("Alias", max_length=255, blank=True)
     subtitle = models.CharField("Subtitle", max_length=255, blank=True)
+    category = models.ForeignKey(CategoryArticle, verbose_name=u"Category", null=True, blank=True)
     image = ThumbnailerImageField(
         "Image",
         upload_to='articles/',
@@ -57,3 +99,5 @@ class Article(AbstractStatus):
         if not image:
             image = get_thumbnailer(open(settings.NO_AVATAR), relative_name='no_image.png')
         return image
+
+

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'colorful',
     'ckeditor',
     'ckeditor_uploader',
+    'django_mptt_admin',
 
     # User apps
     'homepage',

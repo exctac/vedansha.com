@@ -7,9 +7,11 @@
   <ul class="main-nav__list">
     {% for item in sitetree_items %}
       {% if item.insitetree  %}
-        <li class="main-nav__item {% if item.is_current or item.in_current_branch %}{{ item.is_current|yesno:"main-nav__item--active " }}{{ item.in_current_branch|yesno:"main-nav__item--branch-active" }}"{% endif %}>
+        <li class="main-nav__item {% if item.is_current or item.in_current_branch %} {{ item.is_current|yesno:'main-nav__item--active' }} {{ item.in_current_branch|yesno:'main-nav__item--branch-active' }}{% endif %}">
           <a href="{% sitetree_url for item %}" class="main-nav__link" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a>
+          {% if item.has_children %}
             {% sitetree_children of item for menu template "navigate/header_top_nav_level.html" %}
+          {% endif %}
         </li>
       {% endif %}
     {% endfor %}

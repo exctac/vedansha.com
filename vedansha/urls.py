@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from homepage.views import HomePage
-from article.views import ArticleDetail
+from article.views import ArticleDetail, CategoryList
 
 urlpatterns = [
     # Urls for Admin
@@ -23,6 +23,10 @@ urlpatterns = [
     url(r'^', include('single_pages.urls'), name='single_pages'),
     url(r'^', include('gallery.urls'), name='gallery'),
     url(r'^', include('team.urls'), name='team'),
+    # courses, this is will be change
+    url(r'^courses/(?P<catalog_alias>[-\w]+)/$', CategoryList.as_view(), name='courses_catalog'),
+    url(r'^courses/(?P<catalog_alias>[-\w]+)/(?P<subcatalog_alias>[-\w]+)/$', CategoryList.as_view(), name='courses_subcatalog'),
+    url(r'^courses/(?P<catalog_alias>[-\w]+)/(?P<subcatalog_alias>[-\w]+)/(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='course_detail'),
 ] + [
     # for article page
     url(r'^', include('article.urls'), name='article'),
