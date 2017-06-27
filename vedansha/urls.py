@@ -26,7 +26,7 @@ urlpatterns = [
     # courses, this is will be change
     url(r'^courses/(?P<catalog_alias>[-\w]+)/$', CategoryList.as_view(), name='courses_catalog'),
     url(r'^courses/(?P<catalog_alias>[-\w]+)/(?P<subcatalog_alias>[-\w]+)/$', CategoryList.as_view(), name='courses_subcatalog'),
-    url(r'^courses/(?P<catalog_alias>[-\w]+)/(?P<subcatalog_alias>[-\w]+)/(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='course_detail'),
+    url(r'^course/(?P<alias>[-\w]+)/$', ArticleDetail.as_view(), name='course_detail'),
 ] + [
     # for article page
     url(r'^', include('article.urls'), name='article'),
