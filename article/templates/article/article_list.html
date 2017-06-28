@@ -10,7 +10,7 @@
   <div class="blog blog--galery grid grid--flex">
   {% for article in object_list %}
     <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
-      <a href="{% url 'course_detail' catalog_alias=article.category.parent.alias subcatalog_alias=article.category.alias alias=article.alias %}" class="blog__item">
+      <a href="{% url 'course_detail' alias=article.alias %}" class="blog__item">
         {% thumbnail article.get_image 208x208 crop as thumb %}
         <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ article.title }}">
         <div class="blog__item-title">
