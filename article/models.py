@@ -43,7 +43,7 @@ class CategoryArticle(MPTTModel, AbstractStatus):
         if not self.alias:
             orig = self.alias = slugify(self.title)
             for x in itertools.count(1):
-                if not Article.objects.filter(alias=self.alias).exists():
+                if not CategoryArticle.objects.filter(alias=self.alias).exists():
                     break
                 self.alias = '%s-%d' % (orig, x)
         super(CategoryArticle, self).save(*args, **kwargs)
