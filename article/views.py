@@ -20,9 +20,13 @@ class CourseDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CourseDetail, self).get_context_data(**kwargs)
-        context['subcatalog'] = self.object.category
-        context['catalog'] = context['subcatalog'].parent
-        return  context
+        category = self.object.category
+        if category.parent:
+            context['subcatalog'] = category
+            context['catalog'] = category.parent
+        else:
+            context['catalog'] = category
+        return context
 
 
 class CategoryList(ListView):
@@ -37,14 +41,19 @@ class CategoryList(ListView):
             queryset = Article.objects.filter(category=subcategory, status=AbstractStatus.PUBLISHED)
         else:
             queryset = CategoryArticle.objects.get(alias=catalog_slug).get_children().filter(status=AbstractStatus.PUBLISHED)
+            if queryset:
+                return queryset
+            queryset = Article.objects.filter(category__alias=catalog_slug, status=AbstractStatus.PUBLISHED)
         return queryset
 
     def get_template_names(self):
+        catalog_slug = self.kwargs.setdefault('catalog_alias', None)
         subcatalog_slug = self.kwargs.setdefault('subcatalog_alias', None)
-
-        if subcatalog_slug:
-            return ['article/article_list.html']
-        return ['article/category_list.html']
+        if not subcatalog_slug:
+            queryset = CategoryArticle.objects.filter(alias=catalog_slug)[0].get_children().filter(status=AbstractStatus.PUBLISHED)
+            if queryset.count():
+                return ['article/category_list.html']
+        return ['article/article_list.html']
 
     def get_context_data(self, **kwargs):
         context = super(CategoryList, self).get_context_data(**kwargs)

@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     # User apps
     'homepage',
+    'common',
     'slider',
     'singletons',
     'testimonials',
