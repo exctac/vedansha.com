@@ -1,6 +1,7 @@
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from ckeditor.widgets import CKEditorWidget
 from django.contrib import admin
 from article.models import Article, CategoryArticle
-from ckeditor.widgets import CKEditorWidget
 from django.db import models
 from mptt.admin import MPTTModelAdmin
 from django_mptt_admin.admin import DjangoMpttAdmin
@@ -31,7 +32,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ('category',)
 
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget},
+        models.TextField: {'widget': CKEditorUploadingWidget},
     }
     save_on_top = True
 

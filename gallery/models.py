@@ -26,16 +26,17 @@ class PhotoGallery(AbstractStatus):
         """
         image_instance = self.photo_set.first()
         default_image = None
-        if not image_instance and os.path.exists(image_instance.image.path):
+        if not image_instance:
             default_image = get_thumbnailer(open(settings.NO_IMAGE), relative_name='no_image.png')
-        return image_instance.image or default_image
+            print(default_image.file)
+        return default_image or image_instance.image
 
     @property
     def get_all_images(self):
         """
         Get all images generator
         """
-        all_images = (image for image in self.photo_set.all() if os.path.exists(image.image.path))
+        all_images = (image for image in self.photo_set.all())
         return all_images
 
     def save(self, *args, **kwargs):

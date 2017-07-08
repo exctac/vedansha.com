@@ -11,10 +11,11 @@
   {% for photogallery in photogallery_list %}
     <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
       <a href="{% url 'photo_gallery_detail' alias=photogallery.alias %}" class="blog__item">
+
         {% thumbnail photogallery.get_preview_image 208x208 crop as thumb %}
         <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ photogallery.title }}">
         <div class="blog__item-title">
-          <div class="blog__item-title-inner">{{ photogallery.title }}</div>
+          <div class="blog__item-title-inner">{{ photogallery.title }} {{ photogallery.get_preview_image }} </div>
         </div>
       </a>
     </div>

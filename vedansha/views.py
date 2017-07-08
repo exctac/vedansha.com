@@ -1,0 +1,13 @@
+from django.views.generic import TemplateView
+
+
+class SitemapView(TemplateView):
+    template_name = 'vedansha/sitemap.xml'
+
+
+class UrlListView(TemplateView):
+    template_name = 'vedansha/urllist.txt'
+
+
+class GoogleSiteVerificationView(TemplateView):
+    template_name = 'vedansha/googleea1438b485c8eb7f.html'

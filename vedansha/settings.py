@@ -156,8 +156,13 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'vedansha/static'), )
 
-NO_IMAGE = os.path.join(BASE_DIR, 'vedansha/static', 'img/no_image.png')
-NO_AVATAR = os.path.join(BASE_DIR, 'vedansha/static', 'img/no_avatar.jpg')
+NO_IMAGE = os.path.join(STATIC_ROOT, 'img/', 'no_image.png')
+NO_AVATAR = os.path.join(STATIC_ROOT, 'img/', 'no_avatar.jpg')
+
+print(MEDIA_ROOT)
+print(MEDIA_URL)
+print(STATIC_ROOT)
+print(STATICFILES_DIRS)
 
 # ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -171,7 +176,7 @@ CKEDITOR_CONFIGS = {
                 'Bold', 'Italic', 'Underline', 'Strike', '-',
                 'Subscript', 'Superscript', '-',
                 'NumberedList', 'BulletedList', 'Styles', 'Format', 'RemoveFormat',
-                'Cut', 'Copy', 'Paste', 'PasteText',
+                'Cut', 'Copy', 'Paste', 'PasteText', 'Image'
             ],
             [
                 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
@@ -185,10 +190,25 @@ CKEDITOR_CONFIGS = {
                 'Find', 'Replace', 'SelectAll', 'Maximize', 'ShowBlocks', '-', 'Source',
             ]
         ],
+        'extraPlugins': ','.join([
+            'codesnippet',
+            'uploadimage',
+        ]),
         'width': '100%',
         'language': 'en'
     }
 }
+
+# The email address to send on behalf of
+EMAIL_HOST = 'us2.smtp.mailhostbox.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "info@vedansha.com"
+EMAIL_HOST_PASSWORD = "qg()how6"
+# EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 # Add local settings
 try:
     from .local_settings import *
