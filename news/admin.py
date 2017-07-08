@@ -14,7 +14,7 @@ class NewsAdmin(admin.ModelAdmin):
         'title',
         'alias',
         'subtitle',
-        'image',
+        ('image', 'show_image'),
         'text',
         'icons_group',
     )

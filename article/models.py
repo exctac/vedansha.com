@@ -19,7 +19,8 @@ class CategoryArticle(MPTTModel, AbstractStatus):
     image = ThumbnailerImageField(
         "Image",
         upload_to='articles/',
-        # blank=True,
+        blank=True,
+        null=True,
         help_text="Main picture of the article (optional field)"
     )
 
@@ -35,9 +36,10 @@ class CategoryArticle(MPTTModel, AbstractStatus):
         Get Category image
         """
         image = self.image
+        default_image = None
         if not image:
-            image = get_thumbnailer(open(settings.NO_AVATAR), relative_name='no_image.png')
-        return image
+            default_image = get_thumbnailer('no_image.png')
+        return default_image or image
 
     def save(self, *args, **kwargs):
         if not self.alias:
@@ -62,7 +64,8 @@ class Article(AbstractStatus):
     image = ThumbnailerImageField(
         "Image",
         upload_to='articles/',
-        # blank=True,
+        blank=True,
+        null=True,
         help_text="Main picture of the article (optional field)"
     )
     show_image = models.BooleanField("Show image?", default=True)
@@ -96,8 +99,8 @@ class Article(AbstractStatus):
         Get Article image
         """
         image = self.image
+        default_image = None
         if not image:
-            image = get_thumbnailer(open(settings.NO_AVATAR), relative_name='no_image.png')
-        return image
-
+            default_image = get_thumbnailer('no_image.png')
+        return default_image or image
 

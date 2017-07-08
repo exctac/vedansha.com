@@ -11,7 +11,6 @@
   {% for photogallery in photogallery_list %}
     <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
       <a href="{% url 'photo_gallery_detail' alias=photogallery.alias %}" class="blog__item">
-
         {% thumbnail photogallery.get_preview_image 208x208 crop as thumb %}
         <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ photogallery.title }}">
         <div class="blog__item-title">
@@ -19,6 +18,14 @@
         </div>
       </a>
     </div>
+    {% empty %}
+      <div class="grid__cell">
+        <div class="box box--white">
+          <div class="heading--small text-color-orange">
+            <span class="icon icon-exclamation-triangle"></span> Sorry, NO photo galleries.
+          </div>
+        </div>
+      </div>
   {% endfor %}
   </div>
 {% endblock %}

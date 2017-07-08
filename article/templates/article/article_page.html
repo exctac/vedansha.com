@@ -11,9 +11,7 @@
     <div class="article__content">
       {% if article.show_image %}
         {% thumbnail article.get_image 320x240 crop as thumb %}
-        {% if article.get_image %}
-          <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.title }}"></div>
-        {% endif %}
+        <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.title }}"></div>
       {% endif %}
       {{ article.text|safe }}
     </div>

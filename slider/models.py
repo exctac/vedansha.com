@@ -42,7 +42,7 @@ class Slide(AbstractStatus):
     slider = models.ForeignKey(Slider)
     title = models.CharField("Title", max_length=255, blank=True)
     text = models.TextField("Text", blank=True)
-    image = ThumbnailerImageField("Image", upload_to="slider", blank=True)
+    image = ThumbnailerImageField("Image", upload_to="slider")
 
     def __str__(self):
         return self.title

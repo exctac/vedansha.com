@@ -15,6 +15,14 @@
           <img class="blog__item-image" src="{{ thumb.url }}" alt="">
         </a>
       </div>
+    {% empty %}
+      <div class="grid__cell">
+        <div class="box box--white">
+          <div class="heading--small text-color-orange">
+            <span class="icon icon-exclamation-triangle"></span> Sorry, this photo gallery is empty.
+          </div>
+        </div>
+      </div>
     {% endfor %}
   </div>
 {% endblock %}

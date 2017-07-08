@@ -23,6 +23,12 @@
       </div>
     </div>
   </div>
+  {% empty %}
+    <div class="box box--white">
+      <div class="heading--small text-color-orange">
+        <span class="icon icon-exclamation-triangle"></span> Sorry, this sections is empty.
+      </div>
+    </div>
   {% endfor %}
 </div>
 {% endblock %}

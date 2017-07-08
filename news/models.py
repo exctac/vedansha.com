@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from easy_thumbnails.fields import ThumbnailerImageField
+from easy_thumbnails.files import get_thumbnailer
+
 from common.models import AbstractStatus
 from django.utils.text import slugify
 from icons.models import IconGroup
@@ -14,13 +17,14 @@ class News(AbstractStatus):
     title = models.CharField("Title", max_length=255)
     alias = models.CharField("Alias", max_length=255, blank=True, null=True)
     subtitle = models.CharField("Subtitle", max_length=255, blank=True, null=True)
-    image = models.ImageField(
+    image = ThumbnailerImageField(
         "Image",
         upload_to='news_images/',
         blank=True,
         null=True,
         help_text="Main picture of the news (optional field). This picture will by displayed in the news list"
     )
+    show_image = models.BooleanField("Show image?", default=True)
     text = models.TextField("Text", blank=True, null=True)
     icons_group = models.ForeignKey(
         IconGroup,
@@ -43,4 +47,8 @@ class News(AbstractStatus):
         super(News, self).save(*args, **kwargs)
 
     def get_image(self):
-        pass
+        image = self.image
+        default_image = None
+        if not image:
+            default_image = get_thumbnailer('no_image.png')
+        return default_image or image

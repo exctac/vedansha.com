@@ -156,13 +156,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'vedansha/static'), )
 
-NO_IMAGE = os.path.join(STATIC_ROOT, 'img/', 'no_image.png')
-NO_AVATAR = os.path.join(STATIC_ROOT, 'img/', 'no_avatar.jpg')
-
-print(MEDIA_ROOT)
-print(MEDIA_URL)
-print(STATIC_ROOT)
-print(STATICFILES_DIRS)
+NO_IMAGE = os.path.join(MEDIA_ROOT, 'img/', 'no_image.png')
+NO_AVATAR = os.path.join(MEDIA_ROOT, 'img/', 'no_avatar.jpg')
 
 # ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"

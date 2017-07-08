@@ -24,12 +24,12 @@ class PhotoGallery(AbstractStatus):
         """
         Get preview image
         """
-        image_instance = self.photo_set.first()
+        image = self.photo_set.first()
         default_image = None
-        if not image_instance:
-            default_image = get_thumbnailer(open(settings.NO_IMAGE), relative_name='no_image.png')
-            print(default_image.file)
-        return default_image or image_instance.image
+        if not image:
+            default_image = get_thumbnailer('no_image.png')
+        return default_image or image.image
+
 
     @property
     def get_all_images(self):

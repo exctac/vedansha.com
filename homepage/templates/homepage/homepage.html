@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load thumbnail %}
 {% load staticfiles %}
 {% block inner %}
   {% if slider %}
@@ -15,9 +15,8 @@
                   <div class="slide__text">{{ slide.text }}</div>
                 {% endif %}
               </div>
-              {% if slide.image %}
-                <img src="{{ slide.image.url }}">
-              {% endif %}
+              {% thumbnail slide.image 960x405 crop as thumb %}
+              <img src="{{ thumb.url }}">
             </div>
           {% endfor %}
         </div>
