@@ -15,7 +15,7 @@
         {% thumbnail photogallery.get_preview_image 208x208 crop as thumb %}
         <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ photogallery.title }}">
         <div class="blog__item-title">
-          <div class="blog__item-title-inner">{{ photogallery.title }} {{ photogallery.get_preview_image }} </div>
+          <div class="blog__item-title-inner">{{ photogallery.title }}</div>
         </div>
       </a>
     </div>

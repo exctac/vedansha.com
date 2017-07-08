@@ -112,7 +112,7 @@
         <div class="social social--green social--circle">
           {% for icon in article.icons_group.get_icons %}
             {% if icon.url %}
-              <a href="" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
+              <a href="{{ icon.url }}" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
             {% else %}
               <span class="social__item"><span class="icon icon-{{ icon.icons }}"></span></span>
             {% endif %}
