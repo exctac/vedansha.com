@@ -15,7 +15,7 @@
       {% endif %}
       {{ article.text|safe }}
     </div>
-    {% if article.date or article.icons_group %}
+    {% if article.create_date or article.icons_group %}
     <div class="article__footer">
       {% if article.show_date %}
         <span class="article__publish-date">{{ article.create_date | date:"d.m.Y" }}</span>
