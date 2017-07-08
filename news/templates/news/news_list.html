@@ -16,14 +16,14 @@
       <div class="grid__cell grid__cell--12 grid__cell--md-6{% if forloop.counter|divisibleby:"3" or forloop.counter|divisibleby:"7" %} grid__cell--first grid__cell--md-last{% endif %}">
       <div class="article article--news-blog box{% if not forloop.counter|divisibleby:"2" %} box--white{% endif %}">
         <div class="grid grid--with-gutter grid--flex grid--full-height">
-          {% if news.image %}
+          {% if news.image or news.show_image %}
           <div class="grid__cell grid__cell--xs-5 grid__cell--lg-6">
             {% thumbnail news.get_image 208x208 crop as thumb %}
             <div class="article__image" style="background-image: url({{ thumb.url }})"></div>
           </div>
           <div class="spacer hide-xs"></div>
           {% endif %}
-          {% if news.image %}
+          {% if news.image or news.show_image %}
             <div class="grid__cell grid__cell--xs-7 grid__cell--lg-6">
           {% else %}
             <div class="grid__cell grid__cell--12">
