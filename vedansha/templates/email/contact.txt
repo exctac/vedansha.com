@@ -1,0 +1,10 @@
+--==== {{ subject }} ====--
+
+
+Enquiry type: {{ enquiry_type }};
+Name: {{ name }};
+Email: {{ email }};
+Phone: {{ phone }};
+Message:
+
+{{ message }};

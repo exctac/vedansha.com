@@ -171,7 +171,7 @@ CKEDITOR_CONFIGS = {
                 'Bold', 'Italic', 'Underline', 'Strike', '-',
                 'Subscript', 'Superscript', '-',
                 'NumberedList', 'BulletedList', 'Styles', 'Format', 'RemoveFormat',
-                'Cut', 'Copy', 'Paste', 'PasteText', 'Image'
+                'Cut', 'Copy', 'Paste', 'PasteText', 'Image', 'Form'
             ],
             [
                 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
@@ -188,6 +188,7 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join([
             'codesnippet',
             'uploadimage',
+            'forms'
         ]),
         'width': '100%',
         'language': 'en'

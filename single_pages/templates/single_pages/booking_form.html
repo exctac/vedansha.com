@@ -5,6 +5,96 @@
 {% endblock %}
 
 {% block inner__content %}
-  This page is under construction!
+  {% if request.method == 'POST' %}
+  <div class="box box--white">
+    {% if form.errors %}
+      <div class="heading--small text-color-orange">
+        <span class="icon icon-exclamation-triangle"></span>&ensp;Errors! Form is not valid!
+      </div>
+        <div class="spacer"></div>
+        <ul class="icon-ul">
+        {% for field in form %}
+          {% if field.errors %}
+          <li><i class="icon-li icon icon-ban"></i>{{ field.label }} &ndash; <span class="text-color-orange">{{ field.errors.as_text }}</span></li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+    {% else %}
+      <div class="heading--small text-color-green">
+        <span class="icon icon-check"></span>&ensp;Success!
+      </div>
+      <div class="spacer"></div>
+      Thank you, your message was successfully sent!
+    {% endif %}
+  </div>
+  <div class="spacer"></div>
+  {% endif %}
+
+  <form action="{% url 'booking_form' %}" class="form box box--white" method="post" novalidate>
+    {% csrf_token %}
+    <div class="grid grid--with-gutter">
+      <div class="grid__cell grid__cell--md-6">
+        <label class="field-text">
+          <span class="field-text__name">{{ form.name.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.name }}
+          </span>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">{{ form.surname.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.surname }}
+          </span>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">{{ form.phone.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.phone }}
+          </span>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">{{ form.country.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.country }}
+          </span>
+        </label>
+      </div>
+      <div class="grid__cell grid__cell--md-6">
+        <label class="field-text">
+          <span class="field-text__name">{{ form.program.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.program }}
+          </span>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">{{ form.place_birth.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.place_birth }}
+          </span>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">{{ form.time_birth.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.time_birth }}
+          </span>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">{{ form.date_birth.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.date_birth }}
+          </span>
+        </label>
+      </div>
+    </div>
+    <label class="field-text">
+      <span class="field-text__name">{{ form.message.label }} <span class="field-required">*</span></span>
+      <span class="field-text__input-wrap">
+        {{ form.message }}
+      </span>
+    </label>
+    <div class="field-actions text-right">
+      <button type="submit" class="btn btn--expand-xs btn--auto-md btn--underline btn--green">Submit</button>
+    </div>
+  </form>
 {% endblock %}
 

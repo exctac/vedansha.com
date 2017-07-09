@@ -1,0 +1,38 @@
+{% extends 'email/email_base.html' %}
+
+{% block form_title %}
+  {{ subject }}
+{% endblock %}
+
+{% block content %}
+<table border="0" cellpadding="0" cellspacing="0" style="margin:0; padding: 0; border-collapse: collapse" width="100%">
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Enquiry type:</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ enquiry_type }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Name:</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ name }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Email:</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ email }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Phone:</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ phone }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee" colspan="2"><strong>Message:</strong></td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee" colspan="2">{{ message }}</td>
+  </tr>
+</table>
+{% endblock %}
+
+
+
+
+
+
