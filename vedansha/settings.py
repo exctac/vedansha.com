@@ -94,6 +94,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'vedansha.context_processors.footer_content',
+                'vedansha.context_processors.get_settings',
             ],
         },
     },
@@ -204,6 +205,8 @@ EMAIL_HOST_PASSWORD = "qg()how6"
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+GA = True
 
 # Add local settings
 try:
