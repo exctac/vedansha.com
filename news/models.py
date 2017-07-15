@@ -3,12 +3,12 @@ from django.utils import timezone
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
 
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 from django.utils.text import slugify
 from icons.models import IconGroup
 
 
-class News(AbstractStatus):
+class News(AbstractStatus, AbstractMeta):
     """
     News
     """

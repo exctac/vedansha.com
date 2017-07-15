@@ -1,9 +1,10 @@
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView
 from article.models import Article, CategoryArticle
 from common.models import AbstractStatus
+from common.views import MetaContextMixin
 
 
-class ArticleDetail(DetailView):
+class ArticleDetail(MetaContextMixin, DetailView):
     template_name = "article/article_page.html"
     model = Article
     context_object_name = 'article'
@@ -11,7 +12,7 @@ class ArticleDetail(DetailView):
     slug_url_kwarg = 'alias'
 
 
-class CourseDetail(DetailView):
+class CourseDetail(MetaContextMixin, DetailView):
     template_name = "article/article_page.html"
     model = Article
     context_object_name = 'article'
@@ -33,6 +34,7 @@ class CategoryList(ListView):
     """
     
     """
+
     def get_queryset(self):
         catalog_slug = self.kwargs.setdefault('catalog_alias', None)
         subcatalog_slug = self.kwargs.setdefault('subcatalog_alias', None)
@@ -59,7 +61,10 @@ class CategoryList(ListView):
         context = super(CategoryList, self).get_context_data(**kwargs)
         subcatalog_slug = self.kwargs.setdefault('subcatalog_alias', None)
         catalog_slug = self.kwargs.setdefault('catalog_alias', None)
+        context['catalog'] = CategoryArticle.objects.filter(alias=catalog_slug)[0]
         if subcatalog_slug:
             context['subcatalog'] = CategoryArticle.objects.filter(alias=subcatalog_slug)[0]
-        context['catalog'] = CategoryArticle.objects.filter(alias=catalog_slug)[0]
+            context['meta'] = context['subcatalog'].as_meta(self.request)
+        else:
+            context['meta'] = context['catalog'].as_meta(self.request)
         return context

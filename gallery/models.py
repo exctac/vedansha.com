@@ -4,11 +4,11 @@ from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
 from solo.models import SingletonModel
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 from vedansha import settings
 
 
-class PhotoGallery(AbstractStatus):
+class PhotoGallery(AbstractStatus, AbstractMeta):
     title = models.CharField("Title", max_length=255)
     alias = models.CharField("Alias", max_length=255, blank=True)
 
@@ -54,7 +54,7 @@ class Photo(models.Model):
     )
 
 
-class VideoGallery(SingletonModel):
+class VideoGallery(SingletonModel, AbstractMeta):
     """ 
     Video Gallery
     """

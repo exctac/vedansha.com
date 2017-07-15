@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'colorful',
     'ckeditor',
     'ckeditor_uploader',
+    'meta',
     'django_mptt_admin',
 
     # User apps
@@ -207,6 +208,8 @@ SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 GA = True
+
+META_USE_TITLE_TAG = True
 
 # Add local settings
 try:

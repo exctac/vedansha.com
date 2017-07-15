@@ -1,5 +1,5 @@
 from django.db import models
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 
 
 class Certificate(AbstractStatus):

@@ -3,7 +3,7 @@ from django.contrib import admin
 # from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
-from homepage.views import HomePage
+from homepage.views import Home
 from article.views import CourseDetail, CategoryList
 from vedansha import settings
 from vedansha.views import SitemapView, UrlListView, GoogleSiteVerificationView
@@ -17,7 +17,7 @@ urlpatterns = [
 
     # Urls for Site
 
-    url(r'^$', HomePage.as_view(), name='home'),
+    url(r'^$', Home.as_view(), name='home'),
     url(r'^sitemap.xml/$', SitemapView.as_view(), name='sitemap'),
     url(r'^urllist.txt/$', UrlListView.as_view(), name='urllist'),
     url(r'^googleea1438b485c8eb7f.html/$', GoogleSiteVerificationView.as_view(), name='google_verify'),

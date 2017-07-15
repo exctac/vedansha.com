@@ -4,10 +4,10 @@ from django.db import models
 from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 
 
-class Member(AbstractStatus):
+class Member(AbstractMeta, AbstractStatus):
     title = models.CharField("Title", max_length=255)
     alias = models.CharField("Alias", max_length=255, blank=True)
     subtitle = models.CharField("Subtitle", max_length=255, blank=True)

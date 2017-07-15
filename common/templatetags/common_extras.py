@@ -1,4 +1,5 @@
 from django import template
+from meta.templatetags.meta import custom_meta
 
 register = template.Library()
 

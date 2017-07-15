@@ -15,6 +15,12 @@ class PhotoInline(admin.StackedInline):
 
 @admin.register(VideoGallery)
 class VideoGalleryAdmin(SingletonModelAdmin):
+    fieldsets = (
+        ('META options', {
+            'classes': ('collapse',),
+            'fields': ('meta_title', 'meta_description', 'meta_keywords'),
+        }),
+    )
     inlines = [
         VideoGalleryLinkTabular
     ]
@@ -22,6 +28,15 @@ class VideoGalleryAdmin(SingletonModelAdmin):
 
 @admin.register(PhotoGallery)
 class PhotoGalleryAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+           'fields': ('status', ('title', 'alias',))
+        }),
+        ('META options', {
+            'classes': ('collapse',),
+            'fields': ('meta_title', 'meta_description', 'meta_keywords'),
+        }),
+    )
     inlines = [
         PhotoInline
     ]

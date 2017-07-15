@@ -6,13 +6,12 @@ from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
 from mptt.models import MPTTModel, TreeForeignKey
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 from icons.models import IconGroup
-from vedansha import settings
 import mptt
 
 
-class CategoryArticle(MPTTModel, AbstractStatus):
+class CategoryArticle(MPTTModel, AbstractMeta, AbstractStatus):
     title = models.CharField("Title", max_length=255)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', verbose_name=u"Category")
     alias = models.CharField("Alias", max_length=255, blank=True)
@@ -54,7 +53,7 @@ class CategoryArticle(MPTTModel, AbstractStatus):
 mptt.register(CategoryArticle)
 
 
-class Article(AbstractStatus):
+class Article(AbstractStatus, AbstractMeta):
     create_date = models.DateTimeField("Create date", default=timezone.now, blank=True)
     show_date = models.BooleanField("Show create date?", default=True)
     title = models.CharField("Title", max_length=255)

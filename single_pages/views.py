@@ -1,7 +1,9 @@
+from common.views import ShowOnlyPublishedView
 from single_pages.models import *
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from single_pages.forms import ContactForm, BookingForm
 from common.functions import sender_email
+from team.models import Member
 
 
 class ContactsView(FormView):
@@ -19,6 +21,7 @@ class ContactsView(FormView):
     def get_context_data(self, **kwargs):
         context = super(ContactsView, self).get_context_data(**kwargs)
         context['article'] = Contacts.get_solo()
+        context['meta'] = Contacts.get_solo().as_meta(self.request)
         return context
 
 
@@ -36,4 +39,15 @@ class BookingTemplateView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(BookingTemplateView, self).get_context_data(**kwargs)
+        context['meta'] = BookingPage.get_solo().as_meta(self.request)
+        return context
+
+
+class MemberListView(ShowOnlyPublishedView, ListView):
+    template_name = "team/member_list.html"
+    model = Member
+
+    def get_context_data(self, **kwargs):
+        context = super(MemberListView, self).get_context_data(**kwargs)
+        context['meta'] = Members.get_solo().as_meta(self.request)
         return context
