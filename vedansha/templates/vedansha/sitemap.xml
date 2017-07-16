@@ -62,7 +62,7 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/vedansha-retreat-center/</loc>
+  <loc>http://www.vedansha.com/vedansha-retreat-center-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -82,17 +82,17 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/ayurvedic-yogic-menu/</loc>
+  <loc>http://www.vedansha.com/ayurvedic-yogic-meal-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/indian-menu/</loc>
+  <loc>http://www.vedansha.com/indian-menu-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/pizza-italian-menu/</loc>
+  <loc>http://www.vedansha.com/pizza-italian-food-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -147,11 +147,6 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/courses/yoga/ayurveda-therapist-training-course/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>http://www.vedansha.com/courses/yoga/private-yoga-classes/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
@@ -167,6 +162,21 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>http://www.vedansha.com/courses/ayurveda/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/courses/ayurveda/ayurveda-therapist-training-course/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/courses/ayurveda/ayurveda-consultant-training-course-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>http://www.vedansha.com/courses/astrology-and-vastu/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
@@ -178,11 +188,6 @@
 </url>
 <url>
   <loc>http://www.vedansha.com/courses/astrology-and-vastu/vastu-shastra-training-course/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://www.vedansha.com/courses/astrology-and-vastu/astrology-consultation/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
@@ -282,22 +287,17 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>http://www.vedansha.com/aura-check-up-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>http://www.vedansha.com/drop-classes/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/drop-classes/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.vedansha.com/team/yogacharya-ashish-rawat</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.vedansha.com/team/founder</loc>
+  <loc>http://www.vedansha.com/projects/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
@@ -307,17 +307,72 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>http://www.vedansha.com/team/founder</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/team/yogacharya-ashish-rawat</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>http://www.vedansha.com/team/dr-vdovichenko-natalia</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/photo-gallery/on-line-webinar</loc>
+  <loc>http://www.vedansha.com/team/dr-loseva-galina</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/news/what-new/</loc>
+  <loc>http://www.vedansha.com/team/dr-maksim-vdovichenko</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/team/jyotish-acharya-shiva-ghildiyal</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/team/dr-usha-vaishnava</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/team/yogacharya-awdhesh-semwal-1</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/team/nika-nunnari</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/team/abhishek-jaiwal</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/photo-gallery/kriya-ashram</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/photo-gallery/vedansha-ayurveda-rishikesh-india</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/photo-gallery/vedansha-retreat-center</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/photo-gallery/on-line-webinar</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
@@ -337,17 +392,7 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/news/?page=1</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.vedansha.com/courses/yoga/healing-camp-programs-rishikesh-india/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>http://www.vedansha.com/course/50-hours-of-yoga-teacher-training-ttc-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/news/what-new/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
@@ -357,12 +402,12 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/200-hours-of-yoga-teaching-training-ttc-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/300-hours-yoga-teacher-training-ttc-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/300-hours-yoga-teacher-training-ttc-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/200-hours-of-yoga-teaching-training-ttc-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
@@ -372,7 +417,7 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/200-hours-meditation-teacher-training-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/50-hours-of-yoga-teacher-training-ttc-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
@@ -382,12 +427,27 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>http://www.vedansha.com/course/200-hours-meditation-teacher-training-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>http://www.vedansha.com/course/50-hours-of-meditation-teacher-training-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/50-hours-of-pranayama-teacher-training-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/300-hours-of-yoga-therapy-teacher-training-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/500-hours-yoga-therapy-teacher-training-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/prenatalpostnatal-yoga-teacher-course-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
@@ -402,22 +462,77 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/yoga-for-successful-life-retreat-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/50-hours-of-pranayama-teacher-training-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/chakra-balancing-yoga-retreat-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/kids-yoga-teacher-training-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/rejuvenating-detox-meditation-yoga-retreat-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/reiki-training-course-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://www.vedansha.com/course/yoga-ayurveda-anti-age-and-rejuvenation-retreat-rishikesh-india/</loc>
+  <loc>http://www.vedansha.com/course/private-yoga-classes/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/one-day-join-us-program/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/100-hours-of-ayurveda-therapist-training-course-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/200-hours-ayurveda-therapist-training-course/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/50-hours-ayurveda-therapist-training-course/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/100-hours-ayurveda-consultant-training-course-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/50-hours-ayurveda-consultant-training-course/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/200-hours-ayurveda-consultant-training-course-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/courses/astrology-and-vastu/astrology-consultation/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/100-hours-astrology-consultant-training-course-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/50-hours-astrology-consultant-training-course/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/200-hours-astrology-consultant-training-course-rishikesh-india/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
 </url>
@@ -437,8 +552,33 @@
   <priority>0.64</priority>
 </url>
 <url>
+  <loc>http://www.vedansha.com/course/chakra-balancing-yoga-retreat-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/yoga-for-successful-life-retreat-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/yoga-ayurveda-anti-age-and-rejuvenation-retreat-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/rejuvenating-detox-meditation-yoga-retreat-rishikesh-india/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>http://www.vedansha.com/course/yoga-for-women-developing-female-nature-retreat-rishikesh-India/</loc>
   <changefreq>weekly</changefreq>
   <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.vedansha.com/course/astrology-consultation/</loc>
+  <changefreq>weekly</changefreq>
+  <priority>0.51</priority>
 </url>
 </urlset>
