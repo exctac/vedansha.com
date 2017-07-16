@@ -1,4 +1,5 @@
 from common.views import ShowOnlyPublishedView
+from resources.models import BookCategory
 from single_pages.models import *
 from django.views.generic import TemplateView, FormView, ListView
 from single_pages.forms import ContactForm, BookingForm
@@ -50,4 +51,13 @@ class MemberListView(ShowOnlyPublishedView, ListView):
     def get_context_data(self, **kwargs):
         context = super(MemberListView, self).get_context_data(**kwargs)
         context['meta'] = Members.get_solo().as_meta(self.request)
+        return context
+
+
+class ResourcesView(TemplateView):
+    template_name = "single_pages/resources.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ResourcesView, self).get_context_data(**kwargs)
+        context['book_categories'] = BookCategory.objects.prefetch_related('book').filter(status=AbstractStatus.PUBLISHED)
         return context

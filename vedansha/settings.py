@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'certificate',
     'single_pages',
     'gallery',
+    'resources',
     'team',
 ]
 
