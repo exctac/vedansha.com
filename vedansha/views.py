@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 
 
 class SitemapView(TemplateView):
+    content_type = 'application/xml'
     template_name = 'vedansha/sitemap.xml'
 
 
