@@ -168,33 +168,35 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            [
-                'Bold', 'Italic', 'Underline', 'Strike', '-',
-                'Subscript', 'Superscript', '-',
-                'NumberedList', 'BulletedList', 'Styles', 'Format', 'RemoveFormat',
-                'Cut', 'Copy', 'Paste', 'PasteText', 'Image', 'Form'
-            ],
-            [
-                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
-                'Outdent', 'Indent',
-                'BidiLtr', 'BidiRtl', 'Undo', 'Redo',
-            ],
-            [
-                'Table', 'HorizontalRule', 'TextColor', 'BGColor',
-                'SpecialChar', 'Link', 'Unlink', 'Anchor',
-                'Blockquote', 'CreateDiv',
-                'Find', 'Replace', 'SelectAll', 'Maximize', 'ShowBlocks', '-', 'Source',
-            ]
-        ],
+        'toolbar': 'full',
+        # 'toolbar_Custom': [
+        #     [
+        #         'Bold', 'Italic', 'Underline', 'Strike', '-',
+        #         'Subscript', 'Superscript', '-',
+        #         'NumberedList', 'BulletedList', 'Styles', 'Format', 'RemoveFormat',
+        #         'Cut', 'Copy', 'Paste', 'PasteText', 'Image', 'Form'
+        #     ],
+        #     [
+        #         'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+        #         'Outdent', 'Indent',
+        #         'BidiLtr', 'BidiRtl', 'Undo', 'Redo', 'Templates'
+        #     ],
+        #     [
+        #         'Table', 'HorizontalRule', 'TextColor', 'BGColor',
+        #         'SpecialChar', 'Link', 'Unlink', 'Anchor',
+        #         'Blockquote', 'CreateDiv',
+        #         'Find', 'Replace', 'SelectAll', 'Maximize', 'ShowBlocks', '-', 'Source',
+        #     ]
+        # ],
         'extraPlugins': ','.join([
             'codesnippet',
             'uploadimage',
-            'forms'
+            'forms',
+            'paypal_btn'
         ]),
         'width': '100%',
-        'language': 'en'
+        'language': 'en',
+        'allowedContent': True,
     }
 }
 

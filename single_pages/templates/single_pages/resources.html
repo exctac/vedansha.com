@@ -24,9 +24,11 @@
           <div class="grid__cell grid__cell--xs-6 grid__cell--md-4">
             <div class="spacer"></div>
             <div class="grid grid--with-gutter-mini">
-              {% thumbnail book.get_image 96x148 crop as thumb %}
-              <div class="grid__cell grid__cell--5"><img width="100%" height="auto" src="{{ thumb.url }}" alt="{{ book.image_alt }}"></div>
-              <div class="grid__cell grid__cell--7">
+              {% if book.show_image %}
+                {% thumbnail book.get_image 96x148 crop as thumb %}
+                <div class="grid__cell grid__cell--5"><img width="100%" height="auto" src="{{ thumb.url }}" alt="{{ book.image_alt }}"></div>
+              {% endif %}
+              <div class="grid__cell{% if book.show_image %} grid__cell--7{% else %} grid__cell--12{% endif %}">
                 <h4>{{ book.title }}</h4>
                 {% if book.author %}
                   <p>by {{ book.author }}​</p>
