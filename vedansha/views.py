@@ -7,6 +7,7 @@ class SitemapView(TemplateView):
 
 
 class UrlListView(TemplateView):
+    content_type = 'text/html'
     template_name = 'vedansha/urllist.txt'
 
 
