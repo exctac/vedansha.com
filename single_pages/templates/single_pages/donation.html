@@ -9,37 +9,18 @@
     </div>
     <div class="grid__cell grid__cell--md-6">
       <div class="spacer spacer--3x"></div>
-      <form action="" class="form box box--white">
-        <label class="field-select">
-          <div class="field-select__name">Select Country <span class="field-required">*</span></div>
-          <div class="field-select__select-wrap">
-            <select class="field-select__select" required="required">
-              <option>Value 10</option>
-              <option>Value 10</option>
-              <option>Value 10</option>
-              <option>Value 10</option>
-            </select>
-          </div>
-        </label>
-        <label class="field-select">
-          <div class="field-select__name">Select Donation Type <span class="field-required">*</span></div>
-          <div class="field-select__select-wrap">
-            <select class="field-select__select" required="required">
-              <option>Value 1</option>
-              <option>Value 2</option>
-              <option>Value 3</option>
-              <option>Value 10</option>
-            </select>
-          </div>
-        </label>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="form box box--white">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="NQ8DBL7RXZ3E2">
         <label class="field-text">
-          <span class="field-text__name">Donation Amount in USD <span class="field-required">*</span></span>
+          <span class="field-text__name">Purspose of donation</span>
           <span class="field-text__input-wrap">
-            <input class="field-text__input" type="text" placeholder="" required="required">
+            <input type="hidden" name="on0" value="Purspose of donation">
+            <input class="field-text__input" type="text" name="os0" maxlength="200">
           </span>
         </label>
         <div class="field-actions text-right">
-          <button type="submit" class="btn btn--expand-xs btn--auto-md btn--underline btn--green">Booking</button>
+          <button type="submit" title="PayPal – The safer, easier way to pay online!" class="btn btn--expand-xs btn--auto-md btn--underline btn--green"><span class="icon icon-paypal">&ensp;</span>Donation</button>
         </div>
       </form>
     </div>
