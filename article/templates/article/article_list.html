@@ -12,7 +12,7 @@
     <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
       <a href="{% url 'course_detail' alias=article.alias %}" class="blog__item text-color-gray">
         {% thumbnail article.get_image 208x208 crop as thumb %}
-        <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ article.title }}">
+        <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ article.image_alt|default:article.title }}">
         <div class="blog__item-title">
           <div class="blog__item-title-inner">{{ article.title }}</div>
         </div>

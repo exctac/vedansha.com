@@ -11,6 +11,9 @@ class VideoGalleryLinkTabular(admin.TabularInline):
 class PhotoInline(admin.StackedInline):
     model = Photo
     extra = 0
+    fields = (
+        ('image', 'image_alt',),
+    )
 
 
 @admin.register(VideoGallery)

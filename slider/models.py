@@ -43,6 +43,7 @@ class Slide(AbstractStatus):
     title = models.CharField("Title", max_length=255, blank=True)
     text = models.TextField("Text", blank=True)
     image = ThumbnailerImageField("Image", upload_to="slider")
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.title

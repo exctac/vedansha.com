@@ -76,6 +76,7 @@ class PaymentMethodsImages(models.Model):
     Payment methods images 
     """
     image = models.ImageField("Image", upload_to="payment_methods/")
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     parent = models.ForeignKey(PaymentMethods)
 
 

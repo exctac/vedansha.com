@@ -213,7 +213,7 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 GA = True
 
 META_USE_TITLE_TAG = True
-
+META_USE_OG_PROPERTIES = True
 # Add local settings
 try:
     from .local_settings import *

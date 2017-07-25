@@ -25,7 +25,9 @@ class YogaAllianceImagesInline(admin.StackedInline):
 class PaymentMethodsImagesInline(admin.StackedInline):
     model = PaymentMethodsImages
     extra = 0
-
+    fields = (
+        ('image', 'image_alt',),
+    )
 
 @admin.register(ListIcons)
 class ListIconsAdmin(SingletonModelAdmin):

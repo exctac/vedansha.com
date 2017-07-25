@@ -24,6 +24,7 @@ class News(AbstractStatus, AbstractMeta):
         null=True,
         help_text="Main picture of the news (optional field). This picture will by displayed in the news list"
     )
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     show_image = models.BooleanField("Show image?", default=True)
     text = models.TextField("Text", blank=True, null=True)
     icons_group = models.ForeignKey(

@@ -12,7 +12,7 @@
     <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
       <a href="{% url 'courses_subcatalog' catalog_alias=category.parent.alias subcatalog_alias=category.alias %}" class="blog__item text-color-gray">
         {% thumbnail category.get_image 208x208 crop as thumb %}
-        <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ category.title }}">
+        <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ category.image_alt|default:category.title }}">
         <div class="blog__item-title">
           <div class="blog__item-title-inner">{{ category.title }}</div>
         </div>

@@ -22,6 +22,7 @@ class CategoryArticle(MPTTModel, AbstractMeta, AbstractStatus):
         null=True,
         help_text="Main picture of the article (optional field)"
     )
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -68,6 +69,7 @@ class Article(AbstractStatus, AbstractMeta):
         help_text="Main picture of the article (optional field)"
     )
     show_image = models.BooleanField("Show image?", default=True)
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     text = models.TextField("Text", blank=True)
     icons_group = models.ForeignKey(
         IconGroup,

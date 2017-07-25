@@ -1,4 +1,6 @@
 import os
+
+import itertools
 from django.db import models
 from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
@@ -41,7 +43,11 @@ class PhotoGallery(AbstractStatus, AbstractMeta):
 
     def save(self, *args, **kwargs):
         if not self.alias:
-            self.alias = slugify(self.title)
+            orig = self.alias = slugify(self.title)
+            for x in itertools.count(1):
+                if not PhotoGallery.objects.filter(alias=self.alias).exists():
+                    break
+                self.alias = '%s-%d' % (orig, x)
         super(PhotoGallery, self).save(*args, **kwargs)
 
 
@@ -52,6 +58,7 @@ class Photo(models.Model):
         upload_to='photo_gallery/',
         help_text="Add photo to the photo gallery"
     )
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
 
 
 class VideoGallery(SingletonModel, AbstractMeta):
@@ -72,7 +79,9 @@ class VideoGallery(SingletonModel, AbstractMeta):
 
 
 class VideoGalleryLink(AbstractStatus):
-    """"""
+    """
+    Video Gallery link an video
+    """
     video_code = models.CharField(
         "Video code",
         max_length=255,

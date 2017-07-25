@@ -18,6 +18,7 @@ class Member(AbstractMeta, AbstractStatus):
         null=True,
         help_text="Main picture of the Team (optional field)"
     )
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     show_image = models.BooleanField("Show image?", default=True)
     text = models.TextField("Text", blank=True)
 

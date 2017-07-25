@@ -16,7 +16,7 @@
                 {% endif %}
               </div>
               {% thumbnail slide.image 960x405 crop as thumb %}
-              <img src="{{ thumb.url }}">
+              <img src="{{ thumb.url }}" alt="{{ slide.image_alt|default:slide.title }}">
             </div>
           {% endfor %}
         </div>
@@ -113,7 +113,7 @@
           <div class="grid grid--with-gutter-mini grid--center grid--middle">
             {% for image_obj in payment_methods.get_images %}
               <div class="grid__cell grid__cell--6 grid__cell--xs-auto">
-                <div class="text-center"><img src="{{ image_obj.image.url }}"></div>
+                <div class="text-center"><img src="{{ image_obj.image.url }}" alt="{{ image_obj.image_alt }}"></div>
               </div>
               {% if forloop.counter == 2%}
                 <div class="spacer hide-xs"></div>

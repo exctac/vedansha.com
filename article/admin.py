@@ -27,7 +27,7 @@ class ArticleAdmin(admin.ModelAdmin):
                 'alias',
                 'subtitle',
                 'category',
-                ('image', 'show_image'),
+                ('image', 'image_alt', 'show_image'),
                 'text',
                 'icons_group',
             )
@@ -60,7 +60,7 @@ class CategoryArticleAdmin(DjangoMpttAdmin):
                 'title',
                 'parent',
                 'alias',
-                'image',
+                ('image', 'image_alt'),
             )
         }),
         ('META options', {

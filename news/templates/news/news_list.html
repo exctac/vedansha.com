@@ -19,7 +19,7 @@
           {% if news.image or news.show_image %}
           <div class="grid__cell grid__cell--xs-5 grid__cell--lg-6">
             {% thumbnail news.get_image 208x208 crop as thumb %}
-            <div class="article__image" style="background-image: url({{ thumb.url }})"></div>
+            <div class="article__image" style="background-image: url({{ thumb.url }})" title="{{ news.image_alt|default:news.title }}"></div>
           </div>
           <div class="spacer hide-xs"></div>
           {% endif %}
