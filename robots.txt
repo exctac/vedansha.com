@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /ckeditor/
+Disallow: *.js
+Disallow: *.css
+Host: vedansha.com
+Allow: /
+sitemap: http://vedansha.com/sitemap.xml
+
+User-agent: Yandex
+Disallow: /admin/
+Disallow: /ckeditor/
+Disallow: *.js
+Disallow: *.css
+Host: vedansha.com
+Allow: /
+sitemap: http://vedansha.com/sitemap.xml
