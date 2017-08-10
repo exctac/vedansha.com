@@ -26,7 +26,11 @@ class AbstractStatus(models.Model):
 
 
 class AbstractMeta(ModelMeta, models.Model):
-    meta_title = models.CharField("Title", max_length=255, blank=True)
+    meta_title = models.CharField(
+        "Title",
+        max_length=255,
+        blank=True,
+        help_text='If this field is empty, it dublicate Article Title.')
     meta_description = models.TextField("Description", blank=True)
     meta_keywords = models.TextField(
         "Keywords",
@@ -47,3 +51,8 @@ class AbstractMeta(ModelMeta, models.Model):
 
     class Meta:
         abstract = True
+
+    def save(self, *args, **kwargs):
+        if not self.meta_title:
+            self.meta_title = self.title
+        super(AbstractMeta, self).save(*args, **kwargs)

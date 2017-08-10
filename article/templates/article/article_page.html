@@ -2,6 +2,12 @@
 
 {% block inner__title %}{% endblock %}
 
+{% block meta %}
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% thumbnail article.get_image 320x240 crop as thumb %}
+<meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ thumb.url }}">
+{% endblock %}
+
 {% block inner__content %}
   <div class="article">
     <h1 class="article__title">{{ article.title }}</h1>
@@ -13,6 +19,10 @@
         {% thumbnail article.get_image 320x240 crop as thumb %}
         <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.image_alt|default:article.title }}"></div>
       {% endif %}
+      <div>
+        <a name="fb_share" share_url="{{ request.build_absolute_uri }}"></a>
+        <script src="https://www.facebook.com/connect.php/js/FB.Share" type="text/javascript"></script>
+      </div>
       {{ article.text|safe }}
     </div>
     {% if article.show_date or article.icons_group %}
