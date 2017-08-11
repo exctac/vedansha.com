@@ -7,7 +7,7 @@ CKEDITOR.plugins.add('paypal_btn',{
                 '<input name="cmd" type="hidden" value="_s-xclick" />' +
                 '<input name="hosted_button_id" type="hidden" value="28MW5BMZFA98Y" />' +
                 '<input name="on0" type="hidden" value="Course advance fee" />' +
-                '<button class="btn btn--green" name="submit" title="PayPal – The safer, easier way to pay online!" type="submit"><em class="icon icon-paypal">&nbsp;</em>&ensp;Buy Now</button>' +
+                '<button class="btn btn--orange" name="submit" title="PayPal – The safer, easier way to pay online!" type="submit"><em class="icon icon-paypal">&nbsp;</em>&ensp;Buy Now</button>' +
             '</form>'
         ); // собственно сама работа плагина
       }

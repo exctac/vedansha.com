@@ -14,13 +14,13 @@
     {% if article.subtitle %}
       <h2 class="article__subtitle">{{ article.subtitle }}</h2>
     {% endif %}
-    <div class="article__content">
+    <div class="article__content text-color-blue-dark">
       {% if article.show_image %}
         {% thumbnail article.get_image 320x240 crop as thumb %}
         <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.image_alt|default:article.title }}"></div>
       {% endif %}
       <div class="article__share">
-        <a id="shareBtn" class="btn btn--green"><span class="icon icon-facebook-official"></span>&ensp;share</a>
+        <a id="shareBtn" class="btn btn--orange"><span class="icon icon-facebook-official"></span>&ensp;share</a>
         <hr>
       </div>
       {{ article.text|safe }}

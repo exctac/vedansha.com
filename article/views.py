@@ -1,7 +1,7 @@
 from django.views.generic import DetailView, ListView
 from article.models import Article, CategoryArticle
 from common.models import AbstractStatus
-from common.views import MetaContextMixin
+from common.views import MetaContextMixin, ShowOnlyPublishedView
 
 
 class ArticleDetail(MetaContextMixin, DetailView):
@@ -55,7 +55,7 @@ class CategoryList(ListView):
             queryset = CategoryArticle.objects.filter(alias=catalog_slug)[0].get_children().filter(status=AbstractStatus.PUBLISHED)
             if queryset.count():
                 return ['article/category_list.html']
-        return ['article/article_list.html']
+        return ['article/course_list.html']
 
     def get_context_data(self, **kwargs):
         context = super(CategoryList, self).get_context_data(**kwargs)
@@ -68,3 +68,14 @@ class CategoryList(ListView):
         else:
             context['meta'] = context['catalog'].as_meta(self.request)
         return context
+
+
+class ArticleListView(ShowOnlyPublishedView, ListView):
+    template_name = 'article/article_list.html'
+    model = Article
+    context_object_name = 'article_list'
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(category__alias='blog', status=self.model.PUBLISHED)
+        return queryset
