@@ -5,7 +5,7 @@
     {% if article.subtitle %}
       <h2 class="article__subtitle">{{ article.subtitle }}</h2>
     {% endif %}
-    <div class="article__content text-color-blue-dark">
+    <div class="article__content {% if not article_mod %}text-color-blue-dark{% endif %}">
     {% if article.show_image %}
       {% thumbnail article.get_image 320x240 crop as thumb %}
       <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.title }}" alt="{{ article.image_alt|default:article.title }}"></div>

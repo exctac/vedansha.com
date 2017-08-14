@@ -29,6 +29,7 @@ class PaymentMethodsImagesInline(admin.StackedInline):
         ('image', 'image_alt',),
     )
 
+
 @admin.register(ListIcons)
 class ListIconsAdmin(SingletonModelAdmin):
     inlines = [
@@ -52,4 +53,9 @@ class PaymentMethodsAdmin(SingletonModelAdmin):
 
 @admin.register(Copyright)
 class CopyrightAdmin(SingletonModelAdmin):
+    pass
+
+
+@admin.register(FloatIconBlock)
+class FloatIconBlockAdmin(SingletonModelAdmin):
     pass

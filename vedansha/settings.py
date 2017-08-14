@@ -97,6 +97,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'vedansha.context_processors.footer_content',
                 'vedansha.context_processors.get_settings',
+                'vedansha.context_processors.float_icons',
             ],
         },
     },
