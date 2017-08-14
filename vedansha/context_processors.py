@@ -13,7 +13,7 @@ def footer_content(request):
 
 
 def float_icons(request):
-    icons = FloatIconBlock.objects.all()[0].icons_group.get_icons
+    icons = FloatIconBlock.get_solo().icons_group.get_icons
     return {
         'float_icons': icons
     }
