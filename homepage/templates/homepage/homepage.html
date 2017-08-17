@@ -38,7 +38,7 @@
                 <span class="icon icon-2x icon-{{ list_icon.icon }}{% if forloop.counter|divisibleby:"2" %} right-lg{% endif %}"></span>&ensp;&nbsp;{{ list_icon.title }}&ensp;&nbsp;
               </div>
               <div class="spacer"></div>
-              <p class="text-left{% if forloop.counter|divisibleby:"2" %} text-right-lg{% endif %}">{{ list_icon.text }}</p>
+              <p class="text-color-gray text-left{% if forloop.counter|divisibleby:"2" %} text-right-lg{% endif %}">{{ list_icon.text }}</p>
             </div>
           </div>
         {% if forloop.counter|divisibleby:"2" %}</div>{% endif %}

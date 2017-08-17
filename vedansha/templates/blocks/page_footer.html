@@ -50,7 +50,7 @@
   {% if float_icons %}
   <div class="social social--float">
     {% for icon in float_icons %}
-      <a href="{{ icon.url }}" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
+      <a href="{{ icon.url }}" class="social__item" title="{{ icon.name }}"><span class="icon icon-{{ icon.icons }}"></span></a>
     {% endfor %}
   </div>
   {% endif %}
