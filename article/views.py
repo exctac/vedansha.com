@@ -34,6 +34,7 @@ class CategoryList(ListView):
     """
     
     """
+    paginate_by = 10
 
     def get_queryset(self):
         catalog_slug = self.kwargs.setdefault('catalog_alias', None)

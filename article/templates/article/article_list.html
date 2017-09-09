@@ -3,7 +3,7 @@
 {% block inner__title %}
 <div class="page__title {# page__title--hollow-front #}">
   <h1 class="heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
-  <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+  <span class="text-color-gray">Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
 </div>
 {% endblock %}
 
