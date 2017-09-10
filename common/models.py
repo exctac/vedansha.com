@@ -53,6 +53,6 @@ class AbstractMeta(ModelMeta, models.Model):
         abstract = True
 
     def save(self, *args, **kwargs):
-        if not self.meta_title:
+        if not self.meta_title and hasattr(self, 'title'):
             self.meta_title = self.title
         super(AbstractMeta, self).save(*args, **kwargs)
