@@ -7,16 +7,16 @@
     <a href="{% url 'home' %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
   </li>
   <li class="breadcrumbs__item">
-    <span class="breadcrumbs__link">403 Forbidden</span>
+    <span class="breadcrumbs__link">Bad Request (400)</span>
   </li>
 </ul>
 {% endblock %}
 
 {% block inner__title %}
-  <h1 class="page__title page__title--hollow-side heading text-color-orange">Ooops!!! 403 Forbidden!</h1>
+  <h1 class="page__title page__title--hollow-side heading text-color-orange">Ooops!!! Bad Request (400)</h1>
 {% endblock %}
 
 {% block inner__content %}
-  <p>{{ exception }}</p>
+  <p>Bad Request (400)</p>
 {% endblock %}
 
