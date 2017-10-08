@@ -92,34 +92,12 @@ class BookingForm(forms.Form):
             'class': 'field-text__input'
         })
     )
-    place_birth = forms.CharField(
-        label='Place of birth',
-        max_length=250,
-        required=True,
-        widget=forms.TextInput(attrs={
-            'class': 'field-text__input'
-        })
-    )
 
     program = forms.CharField (
         label='Desired program',
         max_length=250,
         required=True,
         widget=forms.TextInput(attrs={
-            'class': 'field-text__input'
-        })
-    )
-    time_birth = forms.CharField(
-        label='Time of birth',
-        required=True,
-        widget=TimeInputWidget(attrs={
-            'class': 'field-text__input'
-        })
-    )
-    date_birth = forms.CharField(
-        label='Date of birth',
-        required=True,
-        widget=DateInputWidget(attrs={
             'class': 'field-text__input'
         })
     )
