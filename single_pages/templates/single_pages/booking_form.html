@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block inner__content %}
+
   {% if request.method == 'POST' %}
   <div class="box box--white">
     {% if form.errors %}
@@ -54,15 +55,23 @@
           </span>
         </label>
         <label class="field-text">
-          <span class="field-text__name">{{ form.surname.label }} <span class="field-required">*</span></span>
-          <span class="field-text__input-wrap">
-            {{ form.surname }}
-          </span>
-        </label>
-        <label class="field-text">
           <span class="field-text__name">{{ form.phone.label }} <span class="field-required">*</span></span>
           <span class="field-text__input-wrap">
             {{ form.phone }}
+          </span>
+        </label>
+        <label class="field-text">
+          <span class="field-text__name">{{ form.program.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.program }}
+          </span>
+        </label>
+      </div>
+      <div class="grid__cell grid__cell--md-6">
+        <label class="field-text">
+          <span class="field-text__name">{{ form.surname.label }} <span class="field-required">*</span></span>
+          <span class="field-text__input-wrap">
+            {{ form.surname }}
           </span>
         </label>
         <label class="field-text">
@@ -71,41 +80,15 @@
             {{ form.country }}
           </span>
         </label>
-      </div>
-      <div class="grid__cell grid__cell--md-6">
         <label class="field-text">
-          <span class="field-text__name">{{ form.program.label }} <span class="field-required">*</span></span>
+          <span class="field-text__name">{{ form.message.label }} <span class="field-required">*</span></span>
           <span class="field-text__input-wrap">
-            {{ form.program }}
-          </span>
-        </label>
-        <label class="field-text">
-          <span class="field-text__name">{{ form.place_birth.label }} <span class="field-required">*</span></span>
-          <span class="field-text__input-wrap">
-            {{ form.place_birth }}
-          </span>
-        </label>
-        <label class="field-text">
-          <span class="field-text__name">{{ form.time_birth.label }} <span class="field-required">*</span></span>
-          <span class="field-text__input-wrap">
-            {{ form.time_birth }}
-          </span>
-        </label>
-        <label class="field-text">
-          <span class="field-text__name">{{ form.date_birth.label }} <span class="field-required">*</span></span>
-          <span class="field-text__input-wrap">
-            {{ form.date_birth }}
+            {{ form.message }}
           </span>
         </label>
       </div>
     </div>
-    <label class="field-text">
-      <span class="field-text__name">{{ form.message.label }} <span class="field-required">*</span></span>
-      <span class="field-text__input-wrap">
-        {{ form.message }}
-      </span>
-    </label>
-    <div class="field-actions text-right">
+    <div class="field-actions text-center">
       <button type="submit" class="btn btn--expand-xs btn--auto-md btn--underline btn--green">Submit</button>
     </div>
   </form>

@@ -6,6 +6,21 @@ from homepage.views import Home
 from article.views import CourseDetail, CategoryList
 from vedansha import settings
 from vedansha.views import SitemapView, UrlListView, GoogleSiteVerificationView
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+
+
+def handler404(request):
+    return redirect('/')
+
+
+def handler500(request):
+    return redirect('/')
+
+
+def handler403(request):
+    return redirect('/')
+
 
 urlpatterns = [
     # Urls for Admin
