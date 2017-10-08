@@ -1,21 +1,22 @@
 {% extends "content.html" %}
 
+
 {% block breadcrumbs %}
 <ul class="breadcrumbs">
   <li class="breadcrumbs__item">
     <a href="{% url 'home' %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
   </li>
   <li class="breadcrumbs__item">
-    <span class="breadcrumbs__link">Page Not Found (404)</span>
+    <span class="breadcrumbs__link">Bad Request (400)</span>
   </li>
 </ul>
 {% endblock %}
 
 {% block inner__title %}
-  <h1 class="page__title page__title--hollow-side heading text-color-orange">Ooops!!! Page Not Found (404).</h1>
+  <h1 class="page__title page__title--hollow-side heading text-color-orange">Ooops!!! Bad Request (400)</h1>
 {% endblock %}
 
 {% block inner__content %}
-  <p>The requested URL {{ request_path }} was not found on this server.</p>
+  <p>Bad Request (400)</p>
 {% endblock %}
 
