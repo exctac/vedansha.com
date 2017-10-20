@@ -15,9 +15,11 @@ class HomePage(TemplateView):
         context['yoga_alliance'] = YogaAlliance.get_solo()
         context['payment_methods'] = PaymentMethods.get_solo()
         context['list_icons'] = ListIcons.get_solo().get_items
-        context['slider'] = Slider.objects.filter(status=Slider.PUBLISHED, alias='offer-slider')[0]
         try:
+            context['slider'] = Slider.objects.filter(status=Slider.PUBLISHED, alias='offer-slider')[0]
             context['article'] = Article.objects.get(alias="dr-sanjeev-k-pandey", status=Article.PUBLISHED)
         except ObjectDoesNotExist:
             context['article'] = None
+        except IndexError:
+            context['slider'] = None
         return context
