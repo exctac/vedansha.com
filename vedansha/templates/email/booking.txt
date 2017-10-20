@@ -1,0 +1,15 @@
+--==== {{ subject }} ====--
+
+
+Name: {{ name }}
+Surname: {{ surname }}
+Phone Number: {{ phone }}
+Country: {{ country }}
+Place of birth: {{ place_birth }}
+Desired program: {{ program }}
+Time of birth: {{ time_birth }}
+Date of birth: {{ date_birth }}
+
+Message:
+
+{{ message }}

@@ -1,44 +1,57 @@
-{% load staticfiles sitetree%}
+{% load staticfiles sitetree %}
 <footer class="page__line page__line--footer">
-    <div class="central">
-        <div class="grid grid--with-gutter grid--justify">
-            <div class="grid__cell grid__cell--xs-8 grid__cell--md-2-5">
-              <div class="grid grid--with-gutter">
-                <div class="grid__cell grid__cell--6">
-                  {% sitetree_menu from "header_top_nav" include "company" template "navigate/footer_nav.html" %}
-                </div>
-                <div class="grid__cell grid__cell--6">
-                  <div class="menu menu--white text-right text-left-lg">
-                    <div class="menu__item"><a href="{% url 'news_list' %}" class="menu__link">News/Life Journal</a></div>
-                    <div class="menu__item"><a href="{% url 'article' alias='free-time' %}" class="menu__link">Free time</a></div>
-                    <div class="menu__item"><a href="{% url 'photo_gallery_list' %}" class="menu__link">Photo Gallery</a></div>
-                    <div class="menu__item"><a href="{% url 'video_gallery' %}" class="menu__link">Video Gallery</a></div>
-                    <div class="menu__item"><a href="{% url 'donation' %}" class="menu__link">Donation</a></div>
-                    <div class="menu__item"><a href="{% url 'faq_list' %}" class="menu__link">FAQ</a></div>
-                  </div>
-                </div>
+  <div class="central">
+    <div class="grid grid--with-gutter grid--justify">
+      <div class="grid__cell grid__cell--xs-8 grid__cell--md-2-5">
+        <div class="grid grid--with-gutter">
+          <div class="grid__cell grid__cell--6">
+            {% sitetree_menu from "header_top_nav" include "company" template "navigate/footer_nav.html" %}
+          </div>
+          <div class="grid__cell grid__cell--6">
+            <div class="menu menu--white text-right text-left-lg">
+              <div class="menu__item"><a href="{% url 'news_list' %}" class="menu__link">News/Life Journal</a></div>
+              <div class="menu__item"><a href="{% url 'article' alias='free-time' %}" class="menu__link">Free time</a>
               </div>
-            </div>
-            <div class="grid__cell grid__cell--xs-4 grid__cell--md-auto">
-              <div class="text-center">
-                <a href="{% url 'home' %}" class="logo">
-                  <img class="logo__image" src="{% static 'img/logo_white.svg' %}" width="160px" height="128px" alt="logo">
-                </a>
+              <div class="menu__item"><a href="{% url 'photo_gallery_list' %}" class="menu__link">Photo Gallery</a>
               </div>
+              <div class="menu__item"><a href="{% url 'video_gallery' %}" class="menu__link">Video Gallery</a></div>
+              <div class="menu__item"><a href="{% url 'donation' %}" class="menu__link">Donation</a></div>
+              <div class="menu__item"><a href="{% url 'faq_list' %}" class="menu__link">FAQ</a></div>
             </div>
-            <div class="grid__cell grid__cell--md-auto">
-              <div class="spacer hide-md"></div>
-              <div class="text-center text-right-lg text-color-white">Vedansha © {% now 'Y' %}. {{ copyright.text }}</div>
-            </div>
+          </div>
         </div>
+      </div>
+      <div class="grid__cell grid__cell--xs-4 grid__cell--md-auto">
+        <div class="text-center">
+          <a href="{% url 'home' %}" class="logo">
+            <img class="logo__image" src="{% static 'img/logo_white.svg' %}" width="160px" height="128px" alt="logo">
+          </a>
+        </div>
+      </div>
+      <div class="grid__cell grid__cell--md-auto">
+        <div class="spacer hide-md"></div>
+        <div class="text-center text-right-lg text-color-white">Vedansha © {% now 'Y' %}. {{ copyright.text }}</div>
+        <div class="spacer"></div>
+        <div class="text-center text-right-lg">
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
     </div>
-    <div class="social social--footer social--white social--circle">
-      {% for icon in footer_icons %}
-        {% if icon.url %}
-          <a href="" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
-        {% else %}
-          <span class="social__item"><span class="icon icon-{{ icon.icons }}"></span></span>
-        {% endif %}
-      {% endfor %}
-    </div>
+  </div>
+  <div class="social social--footer social--white social--circle">
+    {% for icon in footer_icons %}
+      {% if icon.url %}
+        <a href="{{ icon.url }}" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
+      {% else %}
+        <span class="social__item"><span class="icon icon-{{ icon.icons }}"></span></span>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% if float_icons %}
+  <div class="social social--float">
+    {% for icon in float_icons %}
+      <a href="{{ icon.url }}" class="social__item" title="{{ icon.name }}"><span class="icon icon-{{ icon.icons }}"></span></a>
+    {% endfor %}
+  </div>
+  {% endif %}
 </footer>

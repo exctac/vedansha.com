@@ -6,22 +6,23 @@ from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
 from mptt.models import MPTTModel, TreeForeignKey
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 from icons.models import IconGroup
-from vedansha import settings
 import mptt
 
 
-class CategoryArticle(MPTTModel, AbstractStatus):
+class CategoryArticle(MPTTModel, AbstractMeta, AbstractStatus):
     title = models.CharField("Title", max_length=255)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', verbose_name=u"Category")
     alias = models.CharField("Alias", max_length=255, blank=True)
     image = ThumbnailerImageField(
         "Image",
         upload_to='articles/',
-        # blank=True,
+        blank=True,
+        null=True,
         help_text="Main picture of the article (optional field)"
     )
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -35,9 +36,10 @@ class CategoryArticle(MPTTModel, AbstractStatus):
         Get Category image
         """
         image = self.image
+        default_image = None
         if not image:
-            image = get_thumbnailer(open(settings.NO_AVATAR), relative_name='no_image.png')
-        return image
+            default_image = get_thumbnailer('no_image.png')
+        return default_image or image
 
     def save(self, *args, **kwargs):
         if not self.alias:
@@ -52,7 +54,7 @@ class CategoryArticle(MPTTModel, AbstractStatus):
 mptt.register(CategoryArticle)
 
 
-class Article(AbstractStatus):
+class Article(AbstractStatus, AbstractMeta):
     create_date = models.DateTimeField("Create date", default=timezone.now, blank=True)
     show_date = models.BooleanField("Show create date?", default=True)
     title = models.CharField("Title", max_length=255)
@@ -62,10 +64,12 @@ class Article(AbstractStatus):
     image = ThumbnailerImageField(
         "Image",
         upload_to='articles/',
-        # blank=True,
+        blank=True,
+        null=True,
         help_text="Main picture of the article (optional field)"
     )
     show_image = models.BooleanField("Show image?", default=True)
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     text = models.TextField("Text", blank=True)
     icons_group = models.ForeignKey(
         IconGroup,
@@ -96,8 +100,8 @@ class Article(AbstractStatus):
         Get Article image
         """
         image = self.image
+        default_image = None
         if not image:
-            image = get_thumbnailer(open(settings.NO_AVATAR), relative_name='no_image.png')
-        return image
-
+            default_image = get_thumbnailer('no_image.png')
+        return default_image or image
 

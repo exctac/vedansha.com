@@ -1,14 +1,16 @@
 import os
+
+import itertools
 from django.db import models
 from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
 from solo.models import SingletonModel
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 from vedansha import settings
 
 
-class PhotoGallery(AbstractStatus):
+class PhotoGallery(AbstractStatus, AbstractMeta):
     title = models.CharField("Title", max_length=255)
     alias = models.CharField("Alias", max_length=255, blank=True)
 
@@ -24,23 +26,28 @@ class PhotoGallery(AbstractStatus):
         """
         Get preview image
         """
-        image_instance = self.photo_set.first()
+        image = self.photo_set.first()
         default_image = None
-        if not image_instance and os.path.exists(image_instance.image.path):
-            default_image = get_thumbnailer(open(settings.NO_IMAGE), relative_name='no_image.png')
-        return image_instance.image or default_image
+        if not image:
+            default_image = get_thumbnailer('no_image.png')
+        return default_image or image.image
+
 
     @property
     def get_all_images(self):
         """
         Get all images generator
         """
-        all_images = (image for image in self.photo_set.all() if os.path.exists(image.image.path))
+        all_images = (image for image in self.photo_set.all())
         return all_images
 
     def save(self, *args, **kwargs):
         if not self.alias:
-            self.alias = slugify(self.title)
+            orig = self.alias = slugify(self.title)
+            for x in itertools.count(1):
+                if not PhotoGallery.objects.filter(alias=self.alias).exists():
+                    break
+                self.alias = '%s-%d' % (orig, x)
         super(PhotoGallery, self).save(*args, **kwargs)
 
 
@@ -51,9 +58,10 @@ class Photo(models.Model):
         upload_to='photo_gallery/',
         help_text="Add photo to the photo gallery"
     )
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
 
 
-class VideoGallery(SingletonModel):
+class VideoGallery(SingletonModel, AbstractMeta):
     """ 
     Video Gallery
     """
@@ -71,7 +79,9 @@ class VideoGallery(SingletonModel):
 
 
 class VideoGalleryLink(AbstractStatus):
-    """"""
+    """
+    Video Gallery link an video
+    """
     video_code = models.CharField(
         "Video code",
         max_length=255,

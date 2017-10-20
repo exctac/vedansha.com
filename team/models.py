@@ -4,21 +4,22 @@ from django.db import models
 from django.utils.text import slugify
 from easy_thumbnails.fields import ThumbnailerImageField
 from easy_thumbnails.files import get_thumbnailer
-from common.models import AbstractStatus
-from vedansha import settings
+from common.models import AbstractStatus, AbstractMeta
 
 
-class Member(AbstractStatus):
+class Member(AbstractMeta, AbstractStatus):
     title = models.CharField("Title", max_length=255)
     alias = models.CharField("Alias", max_length=255, blank=True)
     subtitle = models.CharField("Subtitle", max_length=255, blank=True)
     image = ThumbnailerImageField(
         "Image",
         upload_to='team/',
-        # blank=True,
+        blank=True,
+        null=True,
         help_text="Main picture of the Team (optional field)"
     )
-    show_image = models.BooleanField("Show image?", default=True, editable=False)
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
+    show_image = models.BooleanField("Show image?", default=True)
     text = models.TextField("Text", blank=True)
 
     def __str__(self):
@@ -43,6 +44,7 @@ class Member(AbstractStatus):
         Get Member image
         """
         image = self.image
+        default_image = None
         if not image:
-            image = get_thumbnailer(open(settings.NO_AVATAR), relative_name="img/no_avatar.jpg")
-        return image
+            default_image = get_thumbnailer('no_avatar.jpg')
+        return default_image or image

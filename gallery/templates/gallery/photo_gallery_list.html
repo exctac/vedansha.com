@@ -18,6 +18,14 @@
         </div>
       </a>
     </div>
+    {% empty %}
+      <div class="grid__cell">
+        <div class="box box--white">
+          <div class="heading--small text-color-orange">
+            <span class="icon icon-exclamation-triangle"></span> Sorry, NO photo galleries.
+          </div>
+        </div>
+      </div>
   {% endfor %}
   </div>
 {% endblock %}

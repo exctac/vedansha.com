@@ -1,6 +1,7 @@
 from django.db import models
 from solo.models import SingletonModel
 from common.models import AbstractStatus
+from icons.models import IconGroup
 
 
 class Copyright(SingletonModel):
@@ -76,6 +77,7 @@ class PaymentMethodsImages(models.Model):
     Payment methods images 
     """
     image = models.ImageField("Image", upload_to="payment_methods/")
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     parent = models.ForeignKey(PaymentMethods)
 
 
@@ -118,3 +120,18 @@ class ListIconsItem(AbstractStatus):
     text = models.TextField("Text", max_length=255, blank=False)
     parent = models.ForeignKey(ListIcons)
 
+
+class FloatIconBlock(SingletonModel):
+    icons_group = models.ForeignKey(
+        IconGroup,
+        verbose_name="Select group icons",
+        help_text="If groups of icons are not created then create them",
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return 'Float icons block'
+
+    class Meta:
+        verbose_name = 'Float icons block'

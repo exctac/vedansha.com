@@ -8,4 +8,5 @@ urlpatterns = [
         template_name='single_pages/donation.html',
     ), {'alias': 'donation'}, name='donation'),
     url(r'^booking-form/$', BookingTemplateView.as_view(), name="booking_form"),
+    url(r'^resources/$', ResourcesView.as_view(), name="resources"),
 ]

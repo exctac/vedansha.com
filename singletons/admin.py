@@ -25,6 +25,9 @@ class YogaAllianceImagesInline(admin.StackedInline):
 class PaymentMethodsImagesInline(admin.StackedInline):
     model = PaymentMethodsImages
     extra = 0
+    fields = (
+        ('image', 'image_alt',),
+    )
 
 
 @admin.register(ListIcons)
@@ -50,4 +53,9 @@ class PaymentMethodsAdmin(SingletonModelAdmin):
 
 @admin.register(Copyright)
 class CopyrightAdmin(SingletonModelAdmin):
+    pass
+
+
+@admin.register(FloatIconBlock)
+class FloatIconBlockAdmin(SingletonModelAdmin):
     pass

@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from article.views import ArticleDetail
-from team.views import MemberDetail, MemberListView
+from single_pages.views import MemberListView
 from team.models import Member
 
 urlpatterns = [

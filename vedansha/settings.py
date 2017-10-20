@@ -50,10 +50,12 @@ INSTALLED_APPS = [
     'colorful',
     'ckeditor',
     'ckeditor_uploader',
+    'meta',
     'django_mptt_admin',
 
     # User apps
     'homepage',
+    'common',
     'slider',
     'singletons',
     'testimonials',
@@ -64,6 +66,7 @@ INSTALLED_APPS = [
     'certificate',
     'single_pages',
     'gallery',
+    'resources',
     'team',
 ]
 
@@ -93,6 +96,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'vedansha.context_processors.footer_content',
+                'vedansha.context_processors.get_settings',
+                'vedansha.context_processors.float_icons',
             ],
         },
     },
@@ -155,8 +160,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '..', 'static')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'vedansha/static'), )
 
-NO_IMAGE = os.path.join(BASE_DIR, 'vedansha/static', 'img/no_image.png')
-NO_AVATAR = os.path.join(BASE_DIR, 'vedansha/static', 'img/no_avatar.jpg')
+NO_IMAGE = os.path.join(MEDIA_ROOT, 'img/', 'no_image.png')
+NO_AVATAR = os.path.join(MEDIA_ROOT, 'img/', 'no_avatar.jpg')
 
 # ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -164,30 +169,52 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            [
-                'Bold', 'Italic', 'Underline', 'Strike', '-',
-                'Subscript', 'Superscript', '-',
-                'NumberedList', 'BulletedList', 'Styles', 'Format', 'RemoveFormat',
-                'Cut', 'Copy', 'Paste', 'PasteText',
-            ],
-            [
-                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
-                'Outdent', 'Indent',
-                'BidiLtr', 'BidiRtl', 'Undo', 'Redo',
-            ],
-            [
-                'Table', 'HorizontalRule', 'TextColor', 'BGColor',
-                'SpecialChar', 'Link', 'Unlink', 'Anchor',
-                'Blockquote', 'CreateDiv',
-                'Find', 'Replace', 'SelectAll', 'Maximize', 'ShowBlocks', '-', 'Source',
-            ]
-        ],
+        'toolbar': 'full',
+        # 'toolbar_Custom': [
+        #     [
+        #         'Bold', 'Italic', 'Underline', 'Strike', '-',
+        #         'Subscript', 'Superscript', '-',
+        #         'NumberedList', 'BulletedList', 'Styles', 'Format', 'RemoveFormat',
+        #         'Cut', 'Copy', 'Paste', 'PasteText', 'Image', 'Form'
+        #     ],
+        #     [
+        #         'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+        #         'Outdent', 'Indent',
+        #         'BidiLtr', 'BidiRtl', 'Undo', 'Redo', 'Templates'
+        #     ],
+        #     [
+        #         'Table', 'HorizontalRule', 'TextColor', 'BGColor',
+        #         'SpecialChar', 'Link', 'Unlink', 'Anchor',
+        #         'Blockquote', 'CreateDiv',
+        #         'Find', 'Replace', 'SelectAll', 'Maximize', 'ShowBlocks', '-', 'Source',
+        #     ]
+        # ],
+        'extraPlugins': ','.join([
+            'codesnippet',
+            'uploadimage',
+            'forms',
+            'paypal_btn'
+        ]),
         'width': '100%',
-        'language': 'en'
+        'language': 'en',
+        'allowedContent': True,
     }
 }
+
+# The email address to send on behalf of
+EMAIL_HOST = 'us2.smtp.mailhostbox.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "info@vedansha.com"
+EMAIL_HOST_PASSWORD = "qg()how6"
+# EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+GA = True
+
+META_USE_TITLE_TAG = True
+META_USE_OG_PROPERTIES = True
 # Add local settings
 try:
     from .local_settings import *

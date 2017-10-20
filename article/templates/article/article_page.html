@@ -2,25 +2,33 @@
 
 {% block inner__title %}{% endblock %}
 
+{% block meta %}
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+{% thumbnail article.get_image 320x240 crop as thumb %}
+<meta property="og:image" content="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ thumb.url }}">
+{% endblock %}
+
 {% block inner__content %}
   <div class="article">
     <h1 class="article__title">{{ article.title }}</h1>
     {% if article.subtitle %}
       <h2 class="article__subtitle">{{ article.subtitle }}</h2>
     {% endif %}
-    <div class="article__content">
+    <div class="article__content text-color-blue-dark">
       {% if article.show_image %}
         {% thumbnail article.get_image 320x240 crop as thumb %}
-        {% if article.get_image %}
-          <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.title }}"></div>
-        {% endif %}
+        <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.image_alt|default:article.title }}"></div>
       {% endif %}
+      <div class="article__share">
+        <a id="shareBtn" class="btn btn--blue-dark"><span class="icon icon-facebook-official"></span>&ensp;share</a>
+        <hr>
+      </div>
       {{ article.text|safe }}
     </div>
-    {% if article.date or article.icons_group %}
+    {% if article.show_date or article.icons_group %}
     <div class="article__footer">
       {% if article.show_date %}
-        <span class="article__publish-date">{{ article.create_date | date:"d.m.Y" }}</span>
+        <span class="article__publish-date">{{ article.create_date|date:"d.m.Y" }}</span>
       {% endif %}
       {% if article.icons_group %}
         <div class="social social--orange{% if article.show_date %} right{% endif %}">
@@ -36,6 +44,15 @@
     </div>
     {% endif %}
   </div>
+  <script>
+    document.getElementById('shareBtn').onclick = function() {
+      FB.ui({
+        method: 'share',
+        display: 'popup',
+        href: '{{ request.build_absolute_uri }}',
+      }, function(response){});
+    }
+  </script>
 {% endblock %}
 
 

@@ -1,5 +1,8 @@
-{% load staticfiles %}
+{% load staticfiles meta %}
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include 'meta/meta.html' %}
+{% block meta %}{% endblock %}
 <link href="{% static 'css/reset.css' %}" rel="stylesheet" media="screen">
 <link href="{% static 'css/style.min.css' %}" rel="stylesheet" media="screen">
 <link href="{% static 'img/favicon.ico' %}" rel="icon" type="image/x-icon">
@@ -26,3 +29,6 @@
     }
   });
 </script>
+{% if GA %}
+  {% include 'blocks/GA.html' %}
+{% endif %}

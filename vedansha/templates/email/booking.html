@@ -1,0 +1,54 @@
+{% extends 'email/email_base.html' %}
+
+{% block form_title %}
+  {{ subject }}
+{% endblock %}
+
+{% block content %}
+<table border="0" cellpadding="0" cellspacing="0" style="margin:0; padding: 0; border-collapse: collapse" width="100%">
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Name</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ name }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Surname</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ surname }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Phone Number</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ phone }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Country</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ country }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Place of birth</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ place_birth }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Desired program</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ program }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Time of birth</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ time_birth }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee"><strong>Date of birth</strong></td>
+    <td style="padding: 8px 16px; border: 1px solid #eee">{{ date_birth }}</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee" colspan="2"><strong>Message</strong></td>
+  </tr>
+  <tr>
+    <td style="padding: 8px 16px; border: 1px solid #eee" colspan="2">{{ message }}</td>
+  </tr>
+</table>
+{% endblock %}
+
+
+
+
+
+

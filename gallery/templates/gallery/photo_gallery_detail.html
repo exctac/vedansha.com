@@ -12,8 +12,16 @@
       <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
         {% thumbnail photo.image 208x208 crop as thumb %}
         <a href="/media/{{ photo.image|thumbnailer_passive }}" class="blog__item" data-fancybox="images">
-          <img class="blog__item-image" src="{{ thumb.url }}" alt="">
+          <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ photo.image_alt|default:photogallery.title }}">
         </a>
+      </div>
+    {% empty %}
+      <div class="grid__cell">
+        <div class="box box--white">
+          <div class="heading--small text-color-orange">
+            <span class="icon icon-exclamation-triangle"></span> Sorry, this photo gallery is empty.
+          </div>
+        </div>
       </div>
     {% endfor %}
   </div>

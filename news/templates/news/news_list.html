@@ -1,9 +1,9 @@
-{% extends "content.html" %}{% load staticfiles sitetree %}
+{% extends "content.html" %}{% load staticfiles sitetree thumbnail %}
 
 {% block inner__title %}
 <div class="page__title {# page__title--hollow-front #}">
   <h1 class="heading text-color-orange">{% sitetree_page_title from "header_top_nav" %}</h1>
-{#  <span>Page {{ paginator }} of {{ paginator.num_pages }}</span>#}
+  <span>Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
 </div>
 {% endblock %}
 
@@ -16,13 +16,14 @@
       <div class="grid__cell grid__cell--12 grid__cell--md-6{% if forloop.counter|divisibleby:"3" or forloop.counter|divisibleby:"7" %} grid__cell--first grid__cell--md-last{% endif %}">
       <div class="article article--news-blog box{% if not forloop.counter|divisibleby:"2" %} box--white{% endif %}">
         <div class="grid grid--with-gutter grid--flex grid--full-height">
-          {% if news.image %}
+          {% if news.image or news.show_image %}
           <div class="grid__cell grid__cell--xs-5 grid__cell--lg-6">
-            <div class="article__image" style="background-image: url({{ news.image.url }})"></div>
+            {% thumbnail news.get_image 208x208 crop as thumb %}
+            <div class="article__image" style="background-image: url({{ thumb.url }})" title="{{ news.image_alt|default:news.title }}"></div>
           </div>
           <div class="spacer hide-xs"></div>
           {% endif %}
-          {% if news.image %}
+          {% if news.image or news.show_image %}
             <div class="grid__cell grid__cell--xs-7 grid__cell--lg-6">
           {% else %}
             <div class="grid__cell grid__cell--12">
@@ -43,15 +44,29 @@
       </div>
     {% if forloop.counter|divisibleby:"2" or forloop.last %}
     </div>{% endif %}
-  {% endfor %}
-  <div class="pagination box box--white">
-    <div class="pagination__title">Page:</div>
-    <div class="pagination__nav">
-    {% for page in paginator.page_range %}
-      <a href="{% url 'news_list' %}?page={{ page }}" class="pagination__item">{{ page }}</a>
-    {% endfor %}
+  {% empty %}
+    <div class="grid__cell">
+      <div class="box box--white">
+        <div class="heading--small text-color-orange">
+          <span class="icon icon-exclamation-triangle"></span> Sorry, news is not found!
+        </div>
+      </div>
     </div>
-  </div>
+  {% endfor %}
+  {% if is_paginated %}
+    <div class="pagination box box--white">
+      <div class="pagination__title">Pages:</div>
+      <div class="pagination__nav">
+      {% for page in paginator.page_range %}
+        {% if page_obj.number == page %}
+        <span class="pagination__item pagination__item--active">{{ page }}</span>
+        {% else %}
+        <a href="{% url 'news_list' %}?page={{ page }}" class="pagination__item">{{ page }}</a>
+        {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 
 {% endblock %}
 

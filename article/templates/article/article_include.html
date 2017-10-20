@@ -1,18 +1,24 @@
+{% load thumbnail %}
 {% if article %}
   <div class="article {{ article_mod }}">
     <h1 class="article__title">{{ article.title }}</h1>
     {% if article.subtitle %}
       <h2 class="article__subtitle">{{ article.subtitle }}</h2>
     {% endif %}
+    <div class="article__content {% if not article_mod %}text-color-blue-dark{% endif %}">
     {% if article.show_image %}
-    <div class="article__content">
-      {% if article.image %}
-        <div class="article__image"><img src="{{ article.image.url }}" alt="{{ article.title }}"></div>
-      {% endif %}
-      {{ article.text|safe }}
-    </div>
+      {% thumbnail article.get_image 320x240 crop as thumb %}
+      <div class="article__image"><img src="{{ thumb.url }}" alt="{{ article.title }}" alt="{{ article.image_alt|default:article.title }}"></div>
     {% endif %}
-    {% if article.date or article.icons_group %}
+    {% if share %}
+      <div class="article__share">
+        <a id="shareBtn" class="btn btn--blue-dark"><span class="icon icon-facebook-official"></span>&ensp;share</a>
+        <hr>
+      </div>
+    {% endif %}
+    {{ article.text|safe }}
+    </div>
+    {% if article.create_date or article.icons_group %}
     <div class="article__footer">
       {% if article.show_date %}
         <span class="article__publish-date">{{ article.create_date | date:"d.m.Y" }}</span>

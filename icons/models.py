@@ -23,6 +23,8 @@ class Icon(AbstractStatus):
         ('vk', 'vk'),
         ('booking', 'booking'),
         ('tripadvisor', 'tripadvisor'),
+        ('book', 'book'),
+        ('clear-sun', 'samopoznanie'),
     )
     name = models.CharField(
         "Icon name",

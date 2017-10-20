@@ -1,7 +1,10 @@
 {% extends "content.html" %}{% load staticfiles sitetree thumbnail %}
 
 {% block inner__title %}
-<h1 class="page__title heading text-color-orange">{% sitetree_page_title from "header_bottom_nav" %}</h1>
+<div class="page__title {# page__title--hollow-front #}">
+  <h1 class="heading text-color-orange">{% sitetree_page_title from "header_bottom_nav" %}</h1>
+  <span class="text-color-gray">Page {{ page_obj.number }} of {{ paginator.num_pages }}</span>
+</div>
 {% endblock %}
 
 {% block central--mod %}central--hollow{% endblock %}
@@ -10,9 +13,9 @@
   <div class="blog blog--galery grid grid--flex">
   {% for category in object_list %}
     <div class="grid__cell grid__cell--xxs-6 grid__cell--xs-4 grid__cell--md-3">
-      <a href="{% url 'courses_subcatalog' catalog_alias=category.parent.alias subcatalog_alias=category.alias %}" class="blog__item">
+      <a href="{% url 'courses_subcatalog' catalog_alias=category.parent.alias subcatalog_alias=category.alias %}" class="blog__item text-color-gray">
         {% thumbnail category.get_image 208x208 crop as thumb %}
-        <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ category.title }}">
+        <img class="blog__item-image" src="{{ thumb.url }}" alt="{{ category.image_alt|default:category.title }}">
         <div class="blog__item-title">
           <div class="blog__item-title-inner">{{ category.title }}</div>
         </div>
@@ -20,4 +23,18 @@
     </div>
   {% endfor %}
   </div>
+  {% if is_paginated %}
+    <div class="pagination box box--white">
+      <div class="pagination__title">Pages:</div>
+      <div class="pagination__nav">
+      {% for page in paginator.page_range %}
+        {% if page_obj.number == page %}
+        <span class="pagination__item pagination__item--active">{{ page }}</span>
+        {% else %}
+        <a href="{% url 'blog' %}?page={{ page }}" class="pagination__item">{{ page }}</a>
+        {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

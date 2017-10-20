@@ -1,17 +1,19 @@
-{% load sitetree %}
+{% load sitetree common_extras %}
 {% if sitetree_items|length_is:"1" %}
 {% else %}
 <ul class="breadcrumbs">
 	{% for item in sitetree_items %}
-    {% if forloop.first %}
-      <li class="breadcrumbs__item">
-        <a href="{% sitetree_url for item %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
-      </li>
-		{% elif not forloop.last and item.url != "#" %}
-			  <li class="breadcrumbs__item"><a href="{% sitetree_url for item %}" class="breadcrumbs__link" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a></li>
-		{% else %}
-			<li class="breadcrumbs__item">{{ item.title_resolved }}</li>
-		{% endif %}
+    {% if item.url_resolved != '#unresolved' %}
+      {% if forloop.first %}
+        <li class="breadcrumbs__item">
+          <a href="{% sitetree_url for item %}" class="breadcrumbs__link"><span class="icon icon-home"></span></a>
+        </li>
+      {% elif not forloop.last and item.url != "#" %}
+          <li class="breadcrumbs__item"><a href="{% sitetree_url for item %}" class="breadcrumbs__link" {% if item.hint %}title="{{ item.hint }}"{% endif %}>{{ item.title_resolved }}</a></li>
+      {% else %}
+        <li class="breadcrumbs__item">{{ item.title_resolved }}</li>
+      {% endif %}
+    {% endif %}
 	{% endfor %}
 </ul>
 {% endif %}

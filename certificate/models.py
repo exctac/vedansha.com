@@ -1,5 +1,5 @@
 from django.db import models
-from common.models import AbstractStatus
+from common.models import AbstractStatus, AbstractMeta
 
 
 class Certificate(AbstractStatus):
@@ -8,6 +8,7 @@ class Certificate(AbstractStatus):
     """
     title = models.CharField("Title", max_length=255)
     image = models.ImageField("Image", upload_to="certificates_images")
+    image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     text = models.TextField("Text", max_length=255, blank=True, null=True)
 
     def __str__(self):

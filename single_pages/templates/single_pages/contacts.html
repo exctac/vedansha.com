@@ -3,46 +3,74 @@
 {% block inner__title %}{% endblock %}
 
 {% block inner__content %}
+  {% if request.method == 'POST' %}
+  <div class="box box--white">
+    {% if form.errors %}
+      <div class="heading--small text-color-orange">
+        <span class="icon icon-exclamation-triangle"></span>&ensp;Errors! Form is not valid!
+      </div>
+        <div class="spacer"></div>
+        <ul class="icon-ul">
+        {% for field in form %}
+          {% if field.errors %}
+          <li><i class="icon-li icon icon-ban"></i>{{ field.label }} &ndash; <span class="text-color-orange">{{ field.errors.as_text }}</span></li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+    {% else %}
+      <div class="heading--small text-color-green">
+        <span class="icon icon-check"></span>&ensp;Success!
+      </div>
+      <div class="spacer"></div>
+      Thank you, your message was successfully sent!
+    {% endif %}
+  </div>
+  <div class="spacer"></div>
+  {% endif %}
   <div class="article">
     <div class="article__content">
       <div class="article__title">{{ article.title }}</div>
       {% if article.subtitle %}
-      <h2 class="article__subtitle">{{ article.subtitle }}</h2>
+        <h2 class="article__subtitle">{{ article.subtitle }}</h2>
       {% endif %}
       {% if article.address or article.email or article.phone_1 or article.phone_2 %}
         <ul class="icon-ul">
-          {% if article.address %}<li><i class="icon-li icon icon-map-signs"></i>{{ article.address }}</li>{% endif %}
-          {% if article.email %}<li><i class="icon-li icon icon-envelope"></i><a href="mailto:{{ article.email }}">{{ article.email }}</a></li>{% endif %}
-          {% if article.phone_1 %}<li><i class="icon-li icon icon-phone"></i>{{ article.phone_1 }}</li>{% endif %}
-          {% if article.phone_2 %}<li><i class="icon-li icon icon-mobile"></i>{{ article.phone_2 }}</li>{% endif %}
+          {% if article.address %}
+            <li><i class="icon-li icon icon-map-signs"></i>{{ article.address }}</li>{% endif %}
+          {% if article.email %}
+            <li><i class="icon-li icon icon-envelope"></i><a href="mailto:{{ article.email }}">{{ article.email }}</a>
+            </li>{% endif %}
+          {% if article.phone_1 %}
+            <li><i class="icon-li icon icon-phone"></i>{{ article.phone_1 }}</li>{% endif %}
+          {% if article.phone_2 %}
+            <li><i class="icon-li icon icon-mobile"></i>{{ article.phone_2 }}</li>{% endif %}
         </ul>
       {% endif %}
     </div>
   </div>
-  <div class="map"><iframe id="map" width="100%" height="405" frameborder="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13806.089005329259!2d78.300431!3d30.107866!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb91186d21f6aac4d!2sVedansha+Institute+of+Vedic+Science+and+alternative+Medicine!5e0!3m2!1sde!2sde!4v1492667423964"></iframe></div>
+  <div class="map">
+    <iframe id="map" width="100%" height="405" frameborder="0"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13806.089005329259!2d78.300431!3d30.107866!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb91186d21f6aac4d!2sVedansha+Institute+of+Vedic+Science+and+alternative+Medicine!5e0!3m2!1sde!2sde!4v1492667423964"></iframe>
+  </div>
   <div class="grid grid--with-gutter grid--with-gutter-mini">
     <div class="grid__cell grid__cell--md-6">
-      <form action="" class="form box box--white">
+      <form action="{% url 'contacts' %}" class="form box box--white" method="post" novalidate>
+        {% csrf_token %}
         <legend>Feedback</legend>
         <div class="grid grid--with-gutter">
           <div class="grid__cell grid__cell--md-6">
             <label class="field-select">
-              <div class="field-select__name">Select Enquiry Type  <span class="field-required">*</span></div>
+              <div class="field-select__name">{{ form.enquiry_type.label }} <span class="field-required">*</span></div>
               <div class="field-select__select-wrap">
-                <select class="field-select__select" required="required">
-                  <option>Value 10</option>
-                  <option>Value 10</option>
-                  <option>Value 10</option>
-                  <option>Value 10</option>
-                </select>
+                {{ form.enquiry_type }}
               </div>
             </label>
           </div>
           <div class="grid__cell grid__cell--md-6">
             <label class="field-text">
-              <span class="field-text__name">Name <span class="field-required">*</span></span>
+              <span class="field-text__name">{{ form.name.label }} <span class="field-required">*</span></span>
               <span class="field-text__input-wrap">
-                <input class="field-text__input" type="text" placeholder="" required="required">
+                {{ form.name }}
               </span>
             </label>
           </div>
@@ -50,25 +78,25 @@
         <div class="grid grid--with-gutter">
           <div class="grid__cell grid__cell--md-6">
             <label class="field-text">
-              <span class="field-text__name">Email <span class="field-required">*</span></span>
+              <span class="field-text__name">{{ form.email.label }} <span class="field-required">*</span></span>
               <span class="field-text__input-wrap">
-                <input class="field-text__input" type="text" placeholder="" required="required">
+                {{ form.email }}
               </span>
             </label>
           </div>
           <div class="grid__cell grid__cell--md-6">
             <label class="field-text">
-              <span class="field-text__name">Phone Number <span class="field-required">*</span></span>
+              <span class="field-text__name">{{ form.phone.label }}</span>
               <span class="field-text__input-wrap">
-                <input class="field-text__input" type="text" placeholder="" required="required">
+                {{ form.phone }}
               </span>
             </label>
           </div>
         </div>
         <label class="field-text">
-          <span class="field-text__name">Message / Question <span class="field-required">*</span></span>
+          <span class="field-text__name">{{ form.message.label }} <span class="field-required">*</span></span>
           <span class="field-text__input-wrap">
-            <textarea name="" id="" class="field-text__input" value="" required="required"></textarea>
+            {{ form.message }}
           </span>
         </label>
         <div class="field-actions text-right">
@@ -77,20 +105,20 @@
       </form>
     </div>
     {% if article.icons_group %}
-    <div class="grid__cell grid__cell--md-6">
-      <div class="spacer"></div>
-      <h2>Follow Us</h2>
-      <div class="spacer"></div>
-      <div class="social social--green social--circle">
-        {% for icon in article.icons_group.get_icons %}
-          {% if icon.url %}
-            <a href="" class="social__item"><span class="icon icon-{{ icon.icons }}"></span></a>
-          {% else %}
-            <span class="social__item"><span class="icon icon-{{ icon.icons }}"></span></span>
-          {% endif %}
-        {% endfor %}
+      <div class="grid__cell grid__cell--md-6">
+        <div class="spacer"></div>
+        <h2>Follow Us</h2>
+        <div class="spacer"></div>
+        <div class="social social--green social--circle">
+          {% for icon in article.icons_group.get_icons %}
+            {% if icon.url %}
+              <a href="{{ icon.url }}" class="social__item" title="{{ icon.name }}"><span class="icon icon-{{ icon.icons }}"></span></a>
+            {% else %}
+              <span class="social__item" title="{{ icon.name }}"><span class="icon icon-{{ icon.icons }}"></span></span>
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
-    </div>
     {% endif %}
   </div>
 {% endblock %}
