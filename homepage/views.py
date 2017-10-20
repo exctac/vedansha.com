@@ -22,10 +22,7 @@ class Home(TemplateView):
         except IndexError:
             context['slider'] = None
         try:
-            context['slider'] = Slider.objects.filter(status=Slider.PUBLISHED, alias='offer-slider')[0]
             context['article'] = Article.objects.get(alias="dr-sanjeev-k-pandey", status=Article.PUBLISHED)
         except ObjectDoesNotExist:
             context['article'] = None
-        except IndexError:
-            context['slider'] = None
         return context
