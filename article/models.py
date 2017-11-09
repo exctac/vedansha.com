@@ -55,6 +55,12 @@ mptt.register(CategoryArticle)
 
 
 class Article(AbstractStatus, AbstractMeta):
+    show_homepage_help = "only one article can be displayed on the main page. " \
+                              "If the checkbox is already installed on another article, " \
+                              "the new checkbox will replace it."
+    image_help = "Main picture of the article (optional field)"
+    icons_group_help = "If groups of icons are not created then create them"
+
     create_date = models.DateTimeField("Create date", default=timezone.now, blank=True)
     show_date = models.BooleanField("Show create date?", default=True)
     title = models.CharField("Title", max_length=255)
@@ -66,15 +72,16 @@ class Article(AbstractStatus, AbstractMeta):
         upload_to='articles/',
         blank=True,
         null=True,
-        help_text="Main picture of the article (optional field)"
+        help_text=image_help
     )
+    show_homepage = models.BooleanField("Show in index page?", default=False, help_text=show_homepage_help)
     show_image = models.BooleanField("Show image?", default=True)
     image_alt = models.CharField('Image alternative text', max_length=255, blank=True, null=True)
     text = models.TextField("Text", blank=True)
     icons_group = models.ForeignKey(
         IconGroup,
         verbose_name="Select group icons",
-        help_text="If groups of icons are not created then create them",
+        help_text=icons_group_help,
         blank=True,
         null=True
     )
