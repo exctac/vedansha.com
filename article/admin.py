@@ -21,7 +21,7 @@ class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'status',
+                ('status', 'show_homepage'),
                 ('create_date', 'show_date'),
                 'title',
                 'alias',
@@ -50,6 +50,13 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ('category',)
 
     save_on_top = True
+
+    def save_model(self, request, obj, form, change):
+        articles_show_homepage = Article.objects.filter(show_homepage=True)
+        for article in articles_show_homepage:
+            article.show_homepage = False
+            article.save()
+        super(ArticleAdmin, self).save_model(request, obj, form, change)
 
 
 @admin.register(CategoryArticle)
