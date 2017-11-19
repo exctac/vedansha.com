@@ -128,3 +128,17 @@
     </div>
   </div>
 {% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(document).ready(function() {
+      if (!$.cookie('show_banner')) {
+        $.cookie('show_banner', 1);
+        $.fancybox.open({
+            src: '{% static 'img/baner.jpg' %}'
+        });
+      }
+    });
+  </script>
+{% endblock %}

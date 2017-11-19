@@ -31,7 +31,7 @@
             <div class="article__inner">
               <h2 class="article__subtitle">{{ article.title }}</h2>
               <div class="article__content">
-                <p>{{ article.text|truncatechars_html:160|safe  }}</p>
+                <p>{{ article.text|striptags|truncatechars:160 }}</p>
               </div>
               <div class="article__footer">
                 <span class="article__publish-date">{{ article.create_date|date:"d.m.Y" }}</span>
@@ -53,6 +53,9 @@
       </div>
     </div>
   {% endfor %}
+{% endblock %}
+
+{% block paginations %}
   {% if is_paginated %}
     <div class="pagination box box--white">
       <div class="pagination__title">Pages:</div>
@@ -67,6 +70,4 @@
       </div>
     </div>
   {% endif %}
-
 {% endblock %}
-

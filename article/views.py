@@ -34,7 +34,7 @@ class CategoryList(ListView):
     """
     
     """
-    paginate_by = 10
+    paginate_by = 12
 
     def get_queryset(self):
         catalog_slug = self.kwargs.setdefault('catalog_alias', None)
@@ -75,7 +75,7 @@ class ArticleListView(ShowOnlyPublishedView, ListView):
     template_name = 'article/article_list.html'
     model = Article
     context_object_name = 'article_list'
-    paginate_by = 10
+    paginate_by = 12
 
     def get_queryset(self):
         queryset = self.model.objects.filter(category__alias='blog', status=self.model.PUBLISHED)

@@ -1,4 +1,4 @@
-{% load staticfiles sitetree meta%}
+{% load staticfiles sitetree meta %}
 <!DOCTYPE html>
 <html class="js page" lang="en">
 <head>
@@ -20,14 +20,12 @@
   {% include 'blocks/page_header.html' %}
 </div>
 <div class="layout__row layout__row_total layout">
-  {% block inner %}
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At eaque expedita, itaque maiores minus quaerat veritatis.
-    Autem corporis deleniti ex harum labore maxime modi mollitia quas repudiandae rerum, sint totam!
-  {% endblock %}
+  {% block inner %}{% endblock %}
 </div>
 <div class="layout__row">
   {% include 'blocks/page_footer.html' %}
 </div>
 {% include 'blocks/page_bottom.html' %}
+{% block javascript %}{% endblock %}
 </body>
 </html>

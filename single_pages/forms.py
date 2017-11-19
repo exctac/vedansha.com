@@ -68,8 +68,8 @@ class BookingForm(forms.Form):
             'class': 'field-text__input'
         })
     )
-    surname = forms.CharField(
-        label='Surname',
+    email = forms.CharField(
+        label='Email',
         max_length=250,
         required=True,
         widget=forms.TextInput(attrs={
@@ -79,20 +79,11 @@ class BookingForm(forms.Form):
     phone = forms.CharField(
         label='Phone Number',
         max_length=20,
-        required=True,
+        required=False,
         widget=forms.TextInput(attrs={
             'class': 'field-text__input'
         })
     )
-    country = forms.CharField(
-        label='Country',
-        max_length=250,
-        required=True,
-        widget=forms.TextInput(attrs={
-            'class': 'field-text__input'
-        })
-    )
-
     program = forms.CharField (
         label='Desired program',
         max_length=250,
