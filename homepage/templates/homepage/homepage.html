@@ -44,7 +44,7 @@
         {% if forloop.counter|divisibleby:"2" %}</div>{% endif %}
       {% endfor %}
       <div class="text-center">
-        <a href="" class="btn btn--green">Booking</a>
+        <a href="{% url 'booking_form' %}" class="btn btn--green">Booking</a>
       </div>
     </div>
   </div>
